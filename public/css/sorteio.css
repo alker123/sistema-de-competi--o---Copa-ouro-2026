@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container Principal */
+.sorteio {
+    background: #000 !important;
+    padding: 20px;
+    width: 98%; /* Como a largura é menor que 100%, as margens auto vão funcionar */
+    box-sizing: border-box;
+    
+    /* CENTRALIZAÇÃO HORIZONTAL */
+    margin: 10px auto 0 auto; /* Topo: 10px, Lados: auto, Baixo: 0 */
+    
+    /* Caso prefira manter separado: */
+    /* margin-top: 10px; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    
+    border-radius: 10px; /* Opcional: para suavizar as bordas como nas fotos anteriores */
+}
+
+
+h2, h3 {
+    text-align: center;
+    color: #ddd;
+    
+}
+
+label {
+    color: #ddd;
+}
+
+select {
+    color: #000;
+}
+
+/* Cada linha (Fase ou Categoria) ocupa 100% da largura da coluna */
+.campo-inline {
+    display: flex !important;
+    flex-direction: row !important; /* Mantém Label ao lado do Select */
+    align-items: center !important;
+    gap: 10px;
+    margin-bottom: 8px; /* Espaço entre a linha da Fase e a da Categoria */
+    width: 100% !important; /* Crucial: 100% garante que a próxima div vá para baixo */
+}
+
+.campo-inline label {
+    white-space: nowrap !important;
+    min-width: 75px; /* Tamanho fixo para os labels alinharem os selects verticalmente */
+    color: #ddd;
+    font-size: 16px;
+}
+
+.campo-inline select {
+    flex: 1 !important; /* Ocupa o restante da largura daquela linha */
+    padding: 5px;
+    border-radius: 4px;
+    background: #fff;
+    color: #000;
+    height: 30px;
+}
+
+.grupo-sorteio {
+    flex: 1 !important;
+    background: #151515;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column; /* Garante que os elementos dentro do grupo empilhem */
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* O "Pai" que força o alinhamento lado a lado */
+.conteudo-jogos {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 15px;
+    width: 100%;
+    margin-top: 1%;
+    background: #000;
+
+}
+
+
+/* Ajuste das Tabelas para não estourarem */
+.tabela-resultados {
+    width: 100% !important;
+    background: #fff;
+    border-collapse: collapse;
+    min-width: 0;
+}
+
+.tabela-resultados th { background: #222; color: #FFD700; font-size: 10px; padding: 5px; }
+.tabela-resultados td { color: #000; font-weight: bold; font-size: 11px; padding: 5px; border: 1px solid #ddd; }
+
+/* Botões Amarelos */
+/* --- BOTÃO DE SORTEAR (AMARELO) --- */
+.btn-acao {
+    width: 100%;
+    background: #FFD700;
+    color: #000;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase; /* Deixa o texto em caixa alta */
+    transition: all 0.2s ease; /* Transição suave para todas as mudanças */
+    box-shadow: 0 4px 0 #b8860b; /* Sombra sólida embaixo para parecer 3D */
+}
+
+/* Quando passar o mouse */
+.btn-acao:hover {
+    background: #ffea00; /* Um amarelo mais brilhante */
+    filter: brightness(1.1);
+    transform: translateY(-2px); /* Sobe 2px para dar efeito de flutuar */
+    box-shadow: 0 6px 0 #b8860b; /* Aumenta a sombra ao subir */
+}
+
+/* Quando apertar (clicar) */
+.btn-acao:active {
+    background: #e6c200; /* Amarelo mais escuro */
+    transform: translateY(2px); /* Desce 2px ao ser apertado */
+    box-shadow: 0 2px 0 #b8860b; /* Diminui a sombra para parecer pressionado */
+}
+
+/* Botões de Baixo */
+.botoes-finais {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+/* --- BOTÃO DOWNLOAD PDF --- */
+#PDF3 { 
+    background: linear-gradient(to right, #0f1720, #f32828, #0f1720);
+    cursor: pointer; 
+    border-radius: 5px; 
+    color: white; 
+    padding: 15px; 
+    border: 1px solid #0f1720;
+    font-weight: bold; 
+    font-size: 20px;
+    transition: background 0.3s ease, transform 0.1s; /* Transição suave */
+    
+}
+
+/* Quando passar o mouse */
+#PDF3:hover {
+    background: #ff4444; /* Vermelho mais claro */
+}
+
+/* Quando clicar */
+#PDF3:active {
+    background: #991b1b; /* Vermelho bem escuro */
+    transform: scale(0.98); /* Efeito de "afundar" levemente */
+}
+
+/* --- BOTÃO IMPRIMIR --- */
+#imprimir { 
+    background: linear-gradient(to right, #0f1720, #FFD700, #0f1720);
+    cursor: pointer; 
+    border-radius: 5px; 
+    color: rgb(249, 244, 244); 
+    padding: 15px; 
+    border: 1px solid #0f1720; 
+    font-weight: bold; 
+    font-size: 20px;
+    transition: all 0.3s ease;
+    
+}
+
+/* Quando passar o mouse */
+#imprimir:hover {
+    background: #FFD700; /* Fundo vira dourado */
+    color: #000;         /* Texto vira preto para dar contraste */
+}
+
+/* Quando clicar */
+#imprimir:active {
+    background: #b8860b; /* Dourado escuro (DarkGoldenRod) */
+    transform: scale(0.98);
+}
+/* Responsividade: Se a tela for muito pequena, vira uma coluna só */
+@media (max-width: 1000px) {
+    .conteudo-jogos {
+        flex-direction: column !important;
+    }
+}

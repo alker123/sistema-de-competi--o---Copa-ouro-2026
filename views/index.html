@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Link para o CSS -->
+    <link rel="stylesheet" href="/css/login.css">
+
+    <link rel="icon" href="/imagem/fvc_voando_alto_06.png" type="image/png">
+
+    <!-- Scripts do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <!--<script src="{{ url_for('static', filename='js/firebase1.js') }}"></script>-->
+
+
+</head>
+
+<body>
+    <!-- Imagem centralizada e fixa -->
+    <div class="logo-voandoAlto">
+        <img id="img-movel" src="/imagem/voando-alto-psd.png" alt="Logo" draggable="false">
+    </div>
+
+    <!-- Botões de idioma -->
+    <div class="lang-buttons">
+        <button id="pt" class="active">
+            <img src="/imagem/br.png" alt="Português">
+        </button>
+        <button id="en">
+            <img src="/imagem/us.png" alt="English">
+        </button>
+        <button id="es">
+            <img src="/imagem/es.png" alt="Español">
+        </button>
+    </div>
+
+    <div class="loading" id="loading"></div>
+
+    <div class="login-container">
+    <div class="login-header">
+        <h1>🔐</h1>
+        <h1>Login</h1>
+        <p>Acesse sua conta</p>
+    </div>
+    
+    <div id="alert" class="alert"></div>
+
+    <form id="loginForm">
+        <input type="text" id="user" name="usuario" required autocomplete="username"
+            placeholder="Digite seu usuário ou email">
+        
+        <input type="password" id="pass" name="senha" required autocomplete="current-password"
+            placeholder="Digite sua senha">
+        
+        <button type="button" onclick="entrar()" id="btnLogin" class="btn-login">
+            <i class="fas fa-sign-in-alt"></i> Entrar
+        </button>
+        
+        <p id="mensagem" class="mensagem-erro"></p>
+        
+    </form>
+
+    <div id="clock"></div>
+    <div class="footer">
+        <p>&copy; 2026 Sistema de Autenticação</p>
+    </div>
+</div>
+
+
+<script src="/js/login.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/translate-login.js"></script>
+<script src="/js/relogioLogin.js"></script>
+
+</body>
+
+</html>

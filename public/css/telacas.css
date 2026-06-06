@@ -1,0 +1,302 @@
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container das tabelas - padrão telas grandes */
+.scroll-tabela2 {
+    display: flex;
+    flex-wrap: wrap;           /* permite múltiplas tabelas lado a lado */
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Cada tabela */
+.scroll-tabela2 .tabela-view {
+    flex: 0 0 auto;
+    width: 48%;                /* duas tabelas lado a lado */
+    max-width: 600px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Contêiner principal da tabela */
+.tabela-view {
+    width: 95%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+    overflow-x: hidden; /* impede scroll horizontal */
+}
+
+/* Título da tabela */
+.tabela-view h2 {
+    font-size: clamp(14px, 1.5vw, 24px);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Contêiner de filtros e botões */
+.botoes-acoes25 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.botoes-acoes25 label {
+    font-size: clamp(10px, 1vw, 14px);
+}
+
+.botoes-acoes25 select,
+.botoes-acoes25 button {
+    font-size: clamp(10px, 0.9vw, 14px);
+    padding: 4px 8px;
+}
+
+/* Tabela totalmente responsiva */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* colunas se ajustam proporcionalmente */
+}
+
+/* Cabeçalho */
+/* Tabela */
+.tabela-atletas {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: clamp(10px, 0.9vw, 13px);
+}
+
+/* Cabeçalho */
+.thead-atletas th {
+    background-color: #571cd4;
+    color: #fbf7f7;
+    padding: 6px;
+    text-align: center;
+    word-wrap: break-word;
+    border: 1px solid #333;
+}
+
+
+/* Colunas específicas (apenas se quiser customizar individualmente) */
+th.fot1 {
+    width: 8%; /* espaço menor para fotos */
+    font-size: 14px;
+    
+}
+
+th.pos1 {
+    width: 9%; /* coluna posição */
+    font-size: 14px;
+    
+}
+
+th.atl1 {
+    width: 15%; /* nome do atleta */
+    font-size: 14px;
+    
+}
+
+/* Coluna Categoria */
+th.cate1 {
+    width: 14%; /* largura proporcional */
+    font-size: 14px;
+    
+}
+
+th.j2,
+th.j1,
+th.j3,
+th.j4 {
+    width: 6%; /* notas de cada jogo */
+    font-size: 14px;
+    
+}
+
+th.ntf1 {
+    width: 6%; /* nota final */
+    font-size: 14px;
+    
+}
+
+th.clas1 {
+    width: 14%; /* próxima fase */
+    font-size: 14px;
+    
+}
+
+
+/* Linhas do corpo da tabela */
+tbody td {
+    padding: 6px;
+    text-align: center;
+    font-size: clamp(8px, 0.8vw, 10px); /* menor que antes */
+    border-bottom: 1px solid #ccc;
+    word-wrap: break-word;
+    border: 1px solid #333;
+}
+
+/* Colunas específicas (apenas se quiser customizar individualmente) */
+
+td.fot1 img {
+    width: 8%; /* espaço menor para fotos */
+    width: 30px;
+    height: 30px;
+    border: 1px solid #0066cc;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+td.pos1 {
+    width: 5%; /* coluna posição */
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    
+}
+
+td.atl1 {
+    width: 15%; /* nome do atleta */
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+/* Coluna Categoria */
+td.cate1 {
+    width: 18%; /* largura proporcional */
+    
+}
+
+td.j1,
+td.j2,
+td.j3,
+td.j4 {
+    width: 6%; /* notas de cada jogo */
+    
+}
+
+td.ntf1 {
+    width: 6%; /* nota final */
+    color: #e31010;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    
+}
+
+td.clas1 {
+    width: 14%; /* próxima fase */
+    font-size: 12px;
+    text-align: center;
+    
+}
+
+/* Alterna cores nas linhas */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Mensagem de tabela vazia */
+.empty-message {
+    text-align: center;
+    font-style: italic;
+    font-size: clamp(10px, 0.9vw, 12px);
+    padding: 15px 0;
+}
+
+/* Botões */
+.botoes-acoes25 button {
+    background-color: #004080;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botoes-acoes25 button:hover {
+    background-color: #0066cc;
+}
+
+/* Ajuste para telas gigantes (projetores) */
+@media (min-width: 3000px) {
+    .tabela-view h2 { font-size: 60px; }
+    thead th { font-size: 36px; padding: 16px; }
+    tbody td { font-size: 28px; padding: 12px; }
+    .botoes-acoes25 select,
+    .botoes-acoes25 button { font-size: 28px; padding: 12px 24px; }
+}
+
+/* Ajuste para celulares */
+/* Telas pequenas - até 600px */
+@media (max-width: 600px) {
+    .scroll-tabela2 {
+        display: block;        /* empilha as tabelas verticalmente */
+        width: 100%;
+    }
+
+    .scroll-tabela2 .tabela-view {
+        width: 100%;            /* cada tabela ocupa toda a tela */
+        margin-bottom: 15px;    /* separação entre tabelas */
+    }
+
+    .scroll-tabela2 table,
+    .scroll-tabela2 thead th,
+    .scroll-tabela2 tbody td {
+        font-size: clamp(6px, 0.6vw, 8px);
+        padding: 2px 3px;
+    }
+
+    td.fot1 img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Container das tabelas pequenas */
+@media (max-width: 540px) {
+    .scroll-tabela2 {
+        display: block;        /* empilha tabelas verticalmente */
+        width: 100%;
+        padding: 0 5px;
+        box-sizing: border-box;
+        gap: 10px;
+    }
+
+    .scroll-tabela2 .tabela-view {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-x: auto;      /* permite rolagem horizontal */
+    }
+
+    .scroll-tabela2 table {
+        width: max-content;    /* tabela se adapta ao conteúdo */
+        min-width: 100%;       /* ocupa toda a tela, mas permite scroll */
+    }
+
+    .scroll-tabela2 thead th,
+    .scroll-tabela2 tbody td {
+        font-size: clamp(5px, 0.5vw, 7px); /* fontes menores */
+        padding: 1px 2px;
+    }
+
+    td.fot1 img {
+        width: 16px;
+        height: 16px;
+    }
+
+    td.atl1 { text-align: left; padding-left: 2px; font-weight: bold; }
+    td.ntf1 { font-weight: bold; color: red; }
+}

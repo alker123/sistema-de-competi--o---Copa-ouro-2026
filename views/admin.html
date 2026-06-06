@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração</title>
+    <link rel="icon" href="/imagem/fvc_voando_alto_06.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="/css/adm-ope-arb.header.botao.css">
+    <link rel="stylesheet" href="/css/adm-ope.enviar.para.jurados-checkbox.css">
+    <!--<link rel="stylesheet" href="/css/adm-ope.enviar.para.jurado.css">-->
+    <link rel="stylesheet" href="/css/operadorplanilha1.css">
+    <link rel="stylesheet" href="/css/operadorplanilha2.css">
+    <link rel="stylesheet" href="/css/cadastra-atleta.css">
+    <link rel="stylesheet" href="/css/cadastra-categoria.css">
+    <link rel="stylesheet" href="/css/enviar-para-operador.css">
+    <link rel="stylesheet" href="/css/cadastra-arbitro.css">
+    <link rel="stylesheet" href="/css/cadastra-usuario.css">
+    <link rel="stylesheet" href="/css/excluir-atleta.css">
+    <link rel="stylesheet" href="/css/excluir-categoria.css">
+
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container3">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🏆 ADMINISTRADOR</h1>
+                    <p>Sistema de Competição de Capoeira</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+
+        <div class="container25">
+            <button id="usuario1" class="btn btn-large1">Cadastra Usuario</button>
+            <button id="planilha1" class="btn btn-large1">Planilha Notas</button>
+            <button id="arbitro1" class="btn btn-large1">Cadastra Arbitro</button>
+            <button id="categoria1" class="btn btn-large1">Cadastrar Categoria</button>
+            <button id="atleta1" class="btn btn-large1">Cadastrar Atleta</button>
+            <button id="excluir-categoria1" class="btn btn-large1">Excluir Categoria</button>
+            <button id="excluir-atleta1" class="btn btn-large1">Excluir Atleta</button>
+            <button id="enviar-jurado1" class="btn btn-large1">Enviar para Jurado</button>
+            <button id="enviar-operador1" class="btn btn-large1">Enviar para Operador</button>
+            <button id="banco-de-dados" class="btn btn-large1">Banco de Dados</button>
+            <button id="banco-de-dados1" class="btn btn-large1">Banco de imagem</button>
+        </div>
+
+        <!-- CONTAINER PRINCIPAL -->
+        <div id="container-tabelas" class="tabela-container1" style="display: none;">
+
+            <!-- TABELA PRINCIPAL -->
+            <div id="tabela-principal" class="tabela-view">
+                <div class="container1">
+                    <div class="botoes-acoes" style="margin-bottom:10px;">
+
+                        <div>
+                            <h2>
+                                Jogo: <span id="ritmo-atual">Selecionar</span>
+                                <select id="seletor-ritmo" class="select-estilizado">
+                                    <option value="">Selecionar</option>
+                                    <option value="1º Jogo">1º Jogo</option>
+                                    <option value="2º Jogo">2º Jogo</option>
+                                    <option value="3º Jogo">3º Jogo</option>
+                                    <option value="4º Jogo">4º Jogo</option>
+                                </select>
+                            </h2>
+
+                            <!-- Seletor de Grupo de Fases -->
+                            <label for="seletor-fase-grupo">Fase:</label>
+                            <select id="seletor-fase-grupo">
+                                <option>Selecionar</option>
+                                <option value="classificatória">Classificatória</option>
+                                <option value="oitavas">Oitavas</option>
+                                <option value="quartas">Quartas</option>
+                                <option value="semifinal">Semi-final</option>
+                                <option value="final">Final</option>
+                            </select>
+
+                            <label for="seletor-categoria" class="label-categoria">Categoria:</label>
+                            <select id="seletor-categoria" class="select-estilizado2">
+                                <option value="">Todas</option>
+                            </select>
+
+                            <button id="PDF0" onclick="BaixarPDF()">Download PDF</button>
+                            <button id="imprimir1" onclick="Imprimir1()">IMPRIMIR</button>
+                        </div>
+                    </div>
+
+                    <div class="botoes-acoes1" style="margin-top:10px;">
+                        <button id="MediaTotal" onclick="MediaTotal()">Média Total</button>
+                        <button id="excluir" onclick="excluirLinhasSelecionadas()">Excluir Linhas Selecionadas</button>
+                    </div>
+
+                </div>
+
+                <div class="scroll-tabela">
+                    <div class="container-nomes-arbitros">
+                        <div class="spacer"></div>
+
+                        <input type="text" id="arbitroA" class="input-arbitro-alinhado" placeholder="Árbitro A"
+                            readonly />
+                        <input type="text" id="arbitroB" class="input-arbitro-alinhado" placeholder="Árbitro B"
+                            readonly />
+                        <input type="text" id="arbitroC" class="input-arbitro-alinhado" placeholder="Árbitro C"
+                            readonly />
+
+                        <div class="spacer-media"></div>
+                    </div>
+
+                    <table id="tabela-principal1" border="1" cellspacing="0" cellpadding="5">
+                        <thead>
+                            <tr>
+                                <th id="sel" class="col-sel">Sel.</th>
+                                <th id="atleta" class="col-atleta">Atleta</th>
+                                <th id="categoria" class="col-cat">Categoria</th>
+                                <th id="notaA" class="col-notaA">Nota</th>
+                                <th id="notaB" class="col-notaB">Nota</th>
+                                <th id="notaC" class="col-notaC">Nota</th>
+                                <th id="media" class="col-media">Média</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" class="empty-message">Nenhum dado encontrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <!-- TABELA SECUNDÁRIA -->
+            <div id="tabela-secundaria" class="tabela-view" style="display:none;">
+                <div class="container1">
+                    <h2 id="h2-1">
+                        Nota de Atletas
+                    </h2>
+
+                    <div class="botoes-acoes" style="margin-bottom:10px;">
+                        <div>
+                            <label for="seletor-categoria125" class="label-categoria1">Categoria:</label>
+                            <select id="seletor-categoria125" class="select-estilizado33">
+                                <option value="">Todas</option>
+                            </select>
+
+                            <!-- Seletor de Grupo de Fases -->
+                            <label for="seletor-fase-grupo1">Fase:</label>
+                            <select id="seletor-fase-grupo2">
+                                <option>Selecionar</option>
+                                <option value="classificatória">Classificatória</option>
+                                <option value="oitavas">Oitavas</option>
+                                <option value="quartas">Quartas</option>
+                                <option value="semifinal">Semi-final</option>
+                                <option value="final">Final</option>
+                            </select>
+
+                            <button id="PDF1" onclick="baixarPDF1()">Download PDF</button>
+                            <button id="imprimir2" onclick="Imprimir2()">IMPRIMIR</button>
+                            <button id="salvar2" onclick="salvar2()">Salvar</button>
+                            <button id="terceiro1" onclick="terceiro()">Terçeiro</button>
+                            <button id="segundo1" onclick="segundo()">Segundo</button>
+                        </div>
+
+                        <div class="botoes-acoes" style="margin-top:10px;">
+                            <button id="voltarParaTabelaPrincipal" onclick="voltarParaTabelaPrincipal()">Voltar</button>
+                            <button id="oitavas" onclick="oitavas()">Oitavas</button>
+                            <button id="quartas" onclick="quartas()">Quartas</button>
+                            <button id="semifinal" onclick="semifinal()">Semi-Final</button>
+                            <button id="final" onclick="final()">Final</button>
+                            <button id="enviar1" onclick="enviar1()">Enviar</button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="scroll-tabela1">
+                    <table id="tabela-secundaria3" border="1" cellspacing="0" cellpadding="5">
+                        <thead>
+                            <tr>
+                                <th id="sel">Sel.</th>
+                                <th id="foto3">Foto</th>
+                                <th id="posicao">Posição</th>
+                                <th id="atleta1">Atleta</th>
+                                <th id="categoria1">Categoria</th>
+                                <th id="1º Jogo" class="jogo1">1º Jogo</th>
+                                <th id="2º Jogo" class="jogo2">2º Jogo</th>
+                                <th id="3º Jogo" class="jogo3">3º Jogo</th>
+                                <th id="4º Jogo" class="jogo4">4º Jogo</th>
+                                <th id="notaFinal">Nota Final</th>
+                                <th id="classificado">Proxima Fase</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="11" class="empty-message">Nenhum dado encontrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="statusMessage"
+                    style="display:none; padding: 10px; margin-top: 20px; font-size: 16px; font-weight: bold;">
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Cadastrar Usuário -->
+
+        <div class="container33" id="container-cadastrar-usuario" style="display: none;">
+            <div class="A45">
+                <h4 id="cadastra1" class="cadastra1"><i class="fas fa-user-shield"></i> Cadastrar Usuário</h4>
+                <label class="user" for="novo-user-nome">Usuário</label>
+                <input type="text" id="novo-user-nome" class="novo-user-nome" placeholder="Digite o nome do usuário" />
+
+                <label class="user" for="novo-user-senha">Senha</label>
+                <input type="password" id="novo-user-senha" class="novo-user-senha" placeholder="Digite a senha" />
+
+                <label class="user" for="novo-user-Email">Email</label>
+                <input type="text" id="novo-user-email" class="novo-user-email" placeholder="Digite a email" />
+
+
+                <label class="user" for="rota-html">Rota</label>
+                <select id="rota-html" class="rota-html">
+                    <option value="">Selecione</option>
+                    <option value="juradoA.html">juradoA.html</option>
+                    <option value="juradoB.html">juradoB.html</option>
+                    <option value="juradoC.html">juradoC.html</option>
+                    <option value="juradoD.html">juradoD.html</option>
+                    <option value="juradoE.html">juradoE.html</option>
+                    <option value="juradoF.html">juradoF.html</option>
+                    <option value="operador.html">operador.html</option>
+                    <option value="admin.html">admin.html</option>
+                </select>
+
+                <div class="show-password-container">
+                    <input type="checkbox" id="mostrar-senha" />
+                    <label for="mostrar-senha" class="mostrar-senha-label">Mostrar senha</label>
+                </div>
+
+                <button id="cadastrar-usuario-btn" class="btn btn-large2"><i class="fas fa-save"></i> Salvar</button>
+            </div>
+        </div>
+
+
+
+        <!-- adicionar categoria -->
+
+        <div class="adicionar-categoria" id="adic-categoria" style="display: none;">
+            <h4 id="categoria3"><i class="fas fa-tags"></i> Adicionar Categoria</h4>
+            <label for="nome-categoria1">Nome da Categoria</label>
+            <input type="text" id="nome-categoria1" placeholder="Digite a categoria" />
+
+            <button id="add-categoria1-btn" class="btn btn-large2"><i class="fas fa-save"></i> Salvar</button>
+        </div>
+
+        <!-- adicionar atleta -->
+
+        <div class="adicionar-atleta" id="adic-atleta" style="display: none;">
+            <h4 id="atleta2"><i class="fas fa-running"></i> Adicionar Dados do Atleta</h4>
+            <label for="nome-atleta">Atleta</label>
+            <input type="text" id="nome-atleta" placeholder="Digite o nome">
+
+            <label for="numero-atleta">Numero</label>
+            <input type="text" id="numero-atleta" placeholder="Digite o numero">
+
+            <label for="nome-categoria">Categoria</label>
+            <select id="nome-categoria">
+                <option value="" disabled selected>Selecionar categoria</option>
+            </select>
+
+            <div class="foto-container">
+                <img id="fotoPerfil" src="/imagem/foto.png" alt="Foto do Atleta">
+                <button id="botaoFoto">Adicionar Foto</button>
+                <input type="file" id="inputFoto" accept="image/*" style="display: none;">
+            </div>
+
+            <button id="add-categoria-btn" class="btn btn-large2"><i class="fas fa-save"></i> Salvar</button>
+        </div>
+
+        <!-- Excluir atleta-->
+
+        <div class="excluir-atleta2" id="exc-atleta" style="display: none;">
+            <h4 id="atleta1" class="fasfa"><i class="fas fa-user-times"></i> Excluir Atleta</h4>
+            <select id="lista-categorias-2">
+                <option value="" disabled selected>Selecionar categoria</option>
+            </select>
+            <select id="lista-atletas" multiple></select>
+            <button id="excluir-atleta2-btn" class="btn btn-large2"><i class="fas fa-trash-alt"></i> Excluir</button>
+        </div>
+
+        <!-- Excluir categoria -->
+
+        <div class="excluir-categoria2" id="exc-categoria" style="display: none;">
+            <h4 id="categoria1" class="fasfa-tag"><i class="fas fa-tag"></i> Excluir Categoria</h4>
+            <select id="lista-categorias" multiple>
+                <option value="" disabled>Selecionar categoria</option>
+            </select>
+            <button id="excluir-categoria2-btn" class="btn btn-large2"><i class="fas fa-trash-alt"></i> Excluir</button>
+        </div>
+
+        <!-- mandar atleta para jurado -->
+
+        <div class="container7" id="operadorj1" style="display: none;">
+            <div class="selection-panel">
+                <h3>Enviar Dados para Jurados</h3>
+
+                <div class="selection-group">
+                    <label for="ritmo-selection">Ritmo:</label>
+                    <select id="ritmo-selection">
+                        <option value="1º Jogo">1º Jogo</option>
+                        <option value="2º Jogo">2º Jogo</option>
+                        <option value="3º Jogo">3º Jogo</option>
+                        <option value="4º Jogo">4º Jogo</option>
+                    </select>
+
+                    <label for="categoria-selection">Categoria:</label>
+                    <select id="categoria-selection">
+                        <option value="">Selecione uma categoria</option>
+                    </select>
+
+                    <button id="btn-classificatoria" class="btn btn-fase active"
+                        data-fase="classificatória">Classificatória</button>
+                    <button id="btn-oitavas" class="btn btn-fase" data-fase="oitavas">Oitavas</button>
+                    <button id="btn-quartas" class="btn btn-fase" data-fase="quartas">Quartas</button>
+                    <button id="btn-semifinal" class="btn btn-fase" data-fase="semifinal">Semi-final</button>
+                    <button id="btn-final" class="btn btn-fase" data-fase="final">Final</button>
+
+                    <div class="fase-atual-display">
+                        <span id="fase-atual-nome" class="fase-nome">Classificatória</span>
+                    </div>
+
+                    <!-- Botões de ação -->
+                    <!-- O botão "Trocar de Categoria" -->
+                    <button id="trocar-categoria" class="btn btn-large">🔁 Trocar de Categoria</button>
+
+                    <div id="trocar-categoria-container" class="modal" style="display: none;">
+                        <h3>Trocar de Categoria</h3>
+
+                        <label for="seletor-fase-grupo">Fase:</label>
+                        <select id="seletor-fase23">
+                            <option>Selecionar</option>
+                            <option value="classificatória">Classificatória</option>
+                            <option value="oitavas">Oitavas</option>
+                            <option value="quartas">Quartas</option>
+                            <option value="semifinal">Semi-final</option>
+                            <option value="final">Final</option>
+                        </select>
+
+                        <label for="categoria-selection">Categoria:</label>
+                        <select id="categoria-selection23">
+                            <option value="">Selecione uma categoria</option>
+                        </select>
+
+                        <label for="atleta-selection23">Selecione um Atleta:</label>
+                        <select id="atleta-selection23">
+                            <option value="">Carregando atletas...</option>
+                            <!-- Os atletas serão carregados dinamicamente -->
+                        </select>
+
+                        <label for="nova-categoria">Nova Categoria:</label>
+                        <select id="nova-categoria">
+                            <option value="">Selecione uma categoria</option>
+                        </select>
+
+                        <!-- Botões de ação -->
+                        <div class="botao23">
+                            <button id="confirmar-troca-categoria" class="btn btn-large">Confirmar</button>
+                            <button id="cancelar-troca-categoria" class="btn btn-large">Cancelar</button>
+                            <button id="excluirAtleta" class="btn btn-large">Excluir</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="selection-group1">
+                    <select id="atleta-selection" multiple size="8">
+                        <option value="">Carregando atletas...</option>
+                    </select>
+                    <button id="enviar-jurados" class="btn btn-large">📤 Enviar para Jurado</button>
+
+                    <div id="atleta-jogo">
+                        <table id="atleta-jogo1" class="atleta-jogo1" cellspacing="0" cellpadding="5">
+                            <thead>
+                                <tr>
+                                    <th id="fase">Fase</th>
+                                    <th id="jogo1">Jogo 1</th>
+                                    <th id="jogo2">Jogo 2</th>
+                                    <th id="jogo3">Jogo 3</th>
+                                    <th id="jogo4">Jogo 4</th>
+                                    <th id="atleta4">Atleta</th>
+                                    <th id="categoria4">Categoria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="jogotd" colspan="7" class="empty-message">Nenhum dado encontrado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- cadastra arbitro -->
+
+        <div class="cadastra-arbitro" id="container-cadastra-arbitro" style="display: none;">
+            <h4 id="cadastra1"><i class="fas fa-user-shield"></i> Cadastrar Arbitro</h4>
+            <label for="novo-user-arbitro">arbitro A</label>
+            <input type="text" id="novo-user-arbitro" placeholder="Digite o nome do Arbitro" />
+
+            <label for="novo-user-arbitro1">arbitro B</label>
+            <input type="text" id="novo-user-arbitro1" placeholder="Digite o nome do Arbitro" />
+
+            <label for="novo-user-arbitro2">arbitro C</label>
+            <input type="text" id="novo-user-arbitro2" placeholder="Digite o nome do Arbitro" />
+
+            <button id="cadastrar-arbitro-btn" class="btn btn-large2"><i class="fas fa-save"></i> Salvar</button>
+        </div>
+
+        <!-- enviar para operador-->
+
+        <div class="container8" id="operadorj2" style="display: none;">
+
+            <h4 id="operador1"><i class="fas fa-rocket"></i> Enviar para Operador</h4>
+
+            <!-- Seleção de Atletas -->
+            <label for="atleta-operador">Atletas (selecione um ou mais)</label>
+            <select id="atleta-operador" multiple></select>
+
+            <!-- Seleção de Categorias -->
+            <label for="categoria-operador">Categorias</label>
+            <select id="categoria-operador">
+                <option value="" disabled selected>Selecionar categoria</option>
+            </select>
+
+            <!-- Campo de Foto do Atleta -->
+            <div id="foto-atleta-container" style="display:none;">
+                <label for="foto-atleta">Foto do Atleta</label>
+                <img id="foto-atleta" src="" alt="Foto do Atleta">
+            </div>
+
+            <!-- Botão para Enviar -->
+            <button id="enviar-operador-btn" class="btn btn-large2"><i class="fas fa-paper-plane"></i> Enviar para
+                Operador</button>
+
+        </div>
+
+        <!-- TABELA DUPLICADA -->
+        <div id="tabela-secundaria2" class="tabela-view" style="display:none;">
+            <div class="container1">
+                <h2 id="h2-1">Nota de Atletas</h2>
+
+                <div class="botoes-acoes" style="margin-bottom:10px;">
+                    <div>
+                        <label for="seletor-categoria111" class="label-categoria111">Categoria:</label>
+                        <select id="seletor-categoria111" class="select-estilizado333">
+                            <option value="">Todas</option>
+                        </select>
+
+                        <label for="seletor-fase-grupo1">Fase:</label>
+                        <select id="seletor-fase-grupo3">
+                            <option>Selecionar</option>
+                            <option value="classificatória">Classificatória</option>
+                            <option value="oitavas">Oitavas</option>
+                            <option value="quartas">Quartas</option>
+                            <option value="semifinal">Semi-final</option>
+                            <option value="final">Final</option>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-tabela1">
+                <table id="tabela-secundaria1" border="1" cellspacing="0" cellpadding="5">
+                    <thead>
+                        <tr>
+                            <th id="foto3">Foto</th>
+                            <th id="posicao">Posição</th>
+                            <th id="atleta1">Atleta</th>
+                            <th id="categoria1">Categoria</th>
+                            <th id="1º Jogo">1º Jogo</th>
+                            <th id="2º Jogo">2º Jogo</th>
+                            <th id="3º Jogo">3º Jogo</th>
+                            <th id="4º Jogo">4º Jogo</th>
+                            <th id="notaFinal">Nota Final</th>
+                            <th id="classificado">Proxima Fase</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="10" class="empty-message">Nenhum dado encontrado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="statusMessage"
+                style="display:none; padding: 10px; margin-top: 20px; font-size: 16px; font-weight: bold;"></div>
+
+            <div class="botoes-acoes" style="margin-top:10px;">
+                <button id="voltar4" onclick="voltar4()">Voltar</button>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+    <script type="module" src="/js/admin25.js"></script>
+    <script type="module" src="/js/adminSenhaUsuario.js"></script>
+    <script type="module" src="/js/trocadecategoria.js"></script>
+    <script type="module" src="/js/firebase.js"></script>
+    <script type="module" src="/js/firebase1.js"></script>
+    <script type="module" src="/js/firebase2.js"></script>
+    <script type="module" src="/js/operadorTela.js"></script>
+    <script type="module" src="/js/fase.js"></script>
+    <script type="module" src="/js/tela.js"></script>
+    <script type="module" src="/js/sorteio.js"></script>
+    <script type="module" src="/js/admin.js"></script>
+    <script type="module" src="/js/operadorJurados.js"></script>
+    <script type="module" src="/js/operadorJurados-checkbox.js"></script>
+    <script type="module" src="/js/operadorplanilha01.js"></script>
+    <script type="module" src="/js/operadorplanilha02.js"></script>
+    <script type="module" src="/js/PrimeiroSegundo.js"></script>
+    <script type="module" src="/js/terceiroLugar.js"></script>
+    <script type="module" src="/js/tela12.js"></script>
+    <script type="module" src="/js/trocadecategoria.js"></script>
+    <script src="/js/operadorBotao.js"></script>
+    <script src="/js/app.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.12/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+
+
+</body>
+
+</html>

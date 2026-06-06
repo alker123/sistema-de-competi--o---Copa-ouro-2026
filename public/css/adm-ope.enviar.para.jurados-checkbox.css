@@ -1,0 +1,397 @@
+/* --- ESTILO PADRÃO (Desktop e Geral) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- ESTILO DAS LABELS --- */
+.selection-group label, 
+.atleta-list-container label {
+    color: #fff; /* Cor azul moderna para as labels */
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    margin-right: 5px;
+    display: block; /* Garante que fiquem bem posicionadas */
+    margin-bottom: 5px;
+    
+}
+
+/* --- ESTILO DAS SELECTS --- */
+.selection-group select, 
+.atleta-list-container select {
+    color: #2563eb; /* Cor azul moderna para as labels */
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    margin-right: 5px;
+    display: block; /* Garante que fiquem bem posicionadas */
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-color: #2563eb;
+}
+
+/* Estilo geral de select e botões de fase */
+select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #3b3e42;
+    border-color: #2563eb;
+}
+
+.container7 {
+    width: 100%;
+    padding: 20px;
+}
+
+.selection-panel {
+    /*background: linear-gradient(to right, #3b3e42, #57585a, #d3cdcd);*/
+    background: #000;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid #3b3e42;
+}
+
+.selection-panel h3 {
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Grupo Superior (Filtros e Fases) */
+.selection-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* --- GRUPO 1: ATLETAS + BOTÃO + TABELA (TUDO NA HORIZONTAL) --- */
+.selection-group1 {
+    display: flex;
+    flex-direction: row; /* Mantém os itens em linha */
+    align-items: stretch; /* FORÇA o botão e o select a terem a mesma altura da tabela */
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    min-height: 300px; /* Define uma altura mínima para o conjunto não ficar muito "achatado" */
+}
+
+/* 1. Select de Atletas */
+#atleta-selection {
+    flex: 0 0 250px; /* Largura fixa para a lista */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 1rem;
+    height: auto; /* Deixa o stretch do pai controlar a altura */
+    background-color: white;
+}
+
+/* 2. Botão Enviar (No meio) - AJUSTADO PARA CRESCER */
+.btn-large {
+    flex: 0 0 180px; /* Largura fixa */
+    background: linear-gradient(to right, #0f1720, #f32828, #0f1720); /* Verde conforme solicitado */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    
+    /* CENTRALIZAÇÃO INTERNA (CONTEÚDO) */
+    display: flex;
+    align-items: center;     /* Vertical */
+    justify-content: center;  /* Horizontal */
+    
+    height: 40px; 
+    padding: 0 15px; /* Deixe o padding apenas nas laterais (esquerda/direita) */
+    
+    transition: background 0.3s, transform 0.2s;
+    text-transform: uppercase;
+}
+
+.btn-large:hover {
+    background: #f32828;
+    transform: scale(1.02);
+}
+
+.btn-large5 {
+    flex: 0 0 180px;
+    background: linear-gradient(to right, #f4f5f6, #f32828, #f4f5f6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    
+    /* CENTRALIZAÇÃO INTERNA (CONTEÚDO) */
+    display: flex;
+    align-items: center;     /* Vertical */
+    justify-content: center;  /* Horizontal */
+    
+    height: 40px; 
+    padding: 0 15px; /* Deixe o padding apenas nas laterais (esquerda/direita) */
+    
+    transition: background 0.3s, transform 0.2s;
+    text-transform: uppercase;
+}
+
+.btn-large5:hover {
+    background: #f32828;
+    transform: scale(1.02);
+}
+
+/* 3. Tabela (À direita) */
+#atleta-jogo {
+    flex: 1; /* Ocupa todo o resto do espaço disponível */
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: #fff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 550px; /* Protege contra esmagamento */
+    
+}
+
+table th {
+    background: #1e293b;
+    color: white;
+    padding: 12px;
+    position: sticky; /* Mantém o cabeçalho no topo se a tabela for longa */
+    top: 0;
+    height: 12px;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    height: 12px;
+}
+
+table tr {
+    height: 12px;
+}
+
+/* --- ESTILO DO CHECKBOX (PERSONALIZADO TOTAL) --- */
+input.jogo-checkbox {
+    appearance: none;           /* Remove a caixa cinza padrão do navegador */
+    -webkit-appearance: none;   /* Para Safari/Chrome antigo */
+    width: 12px;     /* Aumentado para 18px para visualização melhor */
+    height: 12px;
+    border: 2px solid #2563eb; /* Borda Azul */
+    border-radius: 4px;
+    background-color: transparent; /* Fundo vazio quando não checado */
+    display: inline-grid;
+    place-content: center;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Quando estiver marcado (Checked) */
+input.jogo-checkbox:checked {
+    background-color: #2563eb; /* Preenche a caixa de azul */
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.6); /* Brilho neon na caixa */
+}
+
+/* Criando a "Seta" (Check) com CSS puro */
+input.jogo-checkbox::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0); /* Escondido por padrão */
+    transition: 120ms transform ease-in-out;
+    background-color: white; /* COR DA SETA */
+    
+    /* Desenha o formato do Check (V) */
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+/* Mostra a seta quando marcado */
+input.jogo-checkbox:checked::before {
+    transform: scale(1);
+}
+
+/* Efeito de foco/hover */
+input.jogo-checkbox:hover {
+    border-color: #1d4ed8;
+    background-color: rgba(37, 99, 235, 0.1);
+}
+
+/* Configuração principal da tabela */
+.atleta-jogo1 {
+    width: 100% !important;
+    border-collapse: collapse !important; /* Une as bordas para não sumirem */
+    margin-top: 5px;
+    background-color: transparent;
+    table-layout: fixed; /* Força a exibição das 7 colunas iguais */
+}
+
+/* Letras e Bordas do Cabeçalho */
+.atleta-jogo1 th {
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Borda branca clara */
+    padding: 12px 8px;
+    color: #ffffff !important; /* Letras Brancas */
+    text-align: center;
+    background-color: rgba(40, 40, 40, 0.9); /* Fundo cinza escuro para contraste */
+}
+
+/* Letras e Bordas do Corpo (Onde estava sumindo) */
+.atleta-jogo1 td {
+    /* CORRIGIDO: Borda clara em vez de preta */
+    border: 1px solid rgba(49, 47, 47, 0.952) !important; 
+    padding: 10px 8px;
+    /* CORRIGIDO: Letras brancas em vez de cinza escuro */
+    color: #2d2c2c !important; 
+    text-align: center;
+    width: 100%;
+}
+
+/* Estilo para a mensagem 'Nenhum dado encontrado' */
+.empty-message {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-style: italic;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+
+.btn-fase {
+    padding: 10px 15px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #282a2f;
+}
+
+.btn-fase.active {
+    background: #2563eb;
+    color: white;
+}
+
+.fase-nome {
+    color: #fff; /* Azul base */
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    
+    /* Efeito Neon: 
+       As primeiras camadas são brancas/claras para o brilho interno 
+       As últimas são azuis para a aura neon externa */
+    text-shadow: 
+        0 0 5px #fff, 
+        0 0 10px #3b3e42, 
+        0 0 20px #2563eb, 
+        0 0 40px #497ff4;
+    
+    /* Opcional: Animação de pulsação para parecer neon real */
+    animation: neon-glow 1.5s ease-in-out infinite alternate;
+}
+
+/* ============================================================
+   AS DUAS MEDIA QUERIES SOLICITADAS
+   ============================================================ */
+
+/* 1. TVs e TELAS GRANDES (1920px) */
+/* --- DESKTOP GIGANTE: 1500px até 2000px --- */
+@media screen and (min-width: 1500px) {
+    .container7 {
+        max-width: 1800px; /* Centraliza o sistema no monitor */
+        margin: 0 auto;
+    }
+
+    .selection-panel h3 {
+        font-size: 2.5rem;
+    }
+
+    /* Aumenta as fontes para não ficarem minúsculas */
+    .selection-group label, 
+    .atleta-list-container label {
+        font-size: 1.2rem;
+    }
+
+    select, .btn-fase {
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+
+    /* Aumenta a tabela e o cabeçalho neon */
+    .fase-nome {
+        font-size: 2.5rem;
+    }
+
+    table th, table td {
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+
+    /* Botão maior para telas 4K */
+    .btn-large {
+        flex: 0 0 250px;
+        font-size: 1.1rem;
+        height: 60px;
+    }
+}
+
+/* 2. CELULARES E TELAS PEQUENAS (360px) */
+/* --- MOBILE: 350px até 600px --- */
+@media screen and (max-width: 600px) {
+    .container7 {
+        padding: 10px; /* Reduz espaço lateral */
+    }
+
+    .selection-panel {
+        padding: 15px;
+    }
+
+    /* Transforma o grupo horizontal em vertical */
+    .selection-group1 {
+        flex-direction: column; 
+        align-items: center;
+        min-height: auto; 
+    }
+
+    /* Select de Atletas ocupa a largura toda */
+    #atleta-selection {
+        flex: 1 1 auto;
+        width: 100%;
+        height: 150px; /* Altura fixa para não sumir no mobile */
+    }
+
+    /* Botão Enviar largo para facilitar o toque */
+    .btn-large {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    /* Tabela com scroll lateral obrigatório */
+    #atleta-jogo {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 450px; /* Permite scroll sem esmagar as notas */
+    }
+
+    .fase-nome {
+        font-size: 1.1rem; /* Diminui o título neon */
+    }
+}

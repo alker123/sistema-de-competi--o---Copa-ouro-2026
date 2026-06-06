@@ -1,0 +1,255 @@
+/* Reset para remover margens e paddings padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo e fundo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #737171;
+  color: #333;
+}
+
+/* Container Principal */
+.container3, .container25 {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Container para os botões */
+.container25 {
+    display: flex;
+    flex-wrap: nowrap;  /* Garante que os botões não quebrem para a próxima linha */
+    justify-content: flex-start;  /* Alinha os botões ao início */
+    gap: 10px;  /* Espaço entre os botões */
+    margin-top: -10px;
+    width: 100%;
+    overflow-x: auto; /* Permite a barra de rolagem horizontal em telas pequenas */
+    background: linear-gradient(to right, #0f1720, #f32828, #0f1720);
+}
+
+/* Estilo dos Botões */
+.container25 .btn {
+    flex: 1 1 auto;  /* O botão vai encolher e crescer conforme necessário */
+    min-width: 100px;  /* Largura mínima para os botões */
+    padding: 10px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;  /* Para garantir que o padding seja incluído no cálculo do tamanho */
+}
+
+/* Botões ao passar o mouse */
+.container25 .btn:hover {
+    background-color: #ebedef71;
+    color: #000;
+}
+
+/* Efeito Neon ativo */
+.container25 .btn:active {
+    background-color: #f32828; /* Cor de fundo ativa */
+    color: rgb(244, 238, 238);
+    box-shadow: 0 0 20px #f32828, 0 0 30px #f51515;  /* Efeito neon mais forte ao clicar */
+}
+
+/* Cabeçalho */
+.header {
+  width: 100%;
+  background: linear-gradient(to right, #0f1720, #f32828, #0f1720);  /* Gradiente de preto (#0f1720) para prata (#c0c0c0) para branco (#ffffff) */
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.header .logo h1 {
+  font-size: 1rem;
+}
+
+.header .logo p {
+  font-size: 0.5rem;
+  font-weight: lighter;
+}
+
+.header .selection-group {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 10px;
+  background-color: #0f1720;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #005bb5;
+}
+
+/* Tabela */
+.table-view table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-view th, .table-view td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table-view th {
+  background-color: #f2f2f2;
+}
+
+/* Personalizando a barra de rolagem */
+::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem */
+    height: 12px; /* Altura da barra de rolagem horizontal */
+}
+
+/* Cor do fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #f1f1f19b; /* Cor de fundo */
+    border-radius: 10px;
+}
+
+/* Cor da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background: #f32828ad; /* Cor da barra de rolagem */
+    border-radius: 10px;
+}
+
+/* Cor da barra de rolagem quando em hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #e40909d7; /* Cor da barra de rolagem ao passar o mouse */
+}
+
+
+
+/* Responsividade com Media Queries */
+
+/* Para dispositivos com largura mínima de 1024px */
+@media only screen and (min-width: 1024px) {
+  /* Ajuste para telas maiores */
+  .header .logo h1 {
+    font-size: 2rem; /* Aumenta o tamanho do logo */
+  }
+
+  .header .logo p {
+    font-size: 0.9rem; /* Aumenta o tamanho do subtítulo */
+  }
+
+  .selection-group button {
+    width: auto; /* Alinha os botões em uma única linha */
+    margin: 10px;
+  }
+
+  .container25 .btn {
+    width: auto;
+    margin: 10px;
+    padding: 12px;
+  }
+
+
+    .container25 {
+        justify-content: space-between;  /* Distribui os botões igualmente na linha */
+    }
+
+    .container25 .btn {
+        padding: 12px;
+    }
+
+  .table-view table {
+    font-size: 1rem; /* Tamanho de fonte maior para telas maiores */
+  }
+}
+
+/* Para dispositivos com largura mínima de 1600px */
+@media only screen and (min-width: 1600px) {
+  /* Para telas grandes */
+  .header .logo h1 {
+    font-size: 3rem; /* Aumenta o tamanho do logo */
+  }
+
+  .header .logo p {
+    font-size: 1.5rem; /* Aumenta o tamanho do subtítulo */
+  }
+
+  .selection-group button {
+    width: auto;
+    margin: 15px;
+  }
+
+  .container25 .btn {
+    width: auto;
+    margin: 15px;
+    padding: 15px;
+  }
+
+  .container25 .btn {
+        flex: 1 1 200px;  /* Botões maiores em telas grandes */
+        padding: 15px;
+    }
+
+  .table-view table {
+    font-size: 1.1rem; /* Tamanho de fonte maior */
+  }
+}
+
+/* Responsividade para dispositivos móveis e tablets */
+@media only screen and (max-width: 768px) {
+  /* Para dispositivos móveis e tablets */
+  .header .logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .header .logo p {
+    font-size: 0.875rem;
+  }
+
+  .selection-group button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .container25 button {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .table-view table {
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsividade para dispositivos menores como smartphones */
+@media only screen and (max-width: 480px) {
+  .header .logo h1 {
+    font-size: 1.25rem;
+  }
+
+  .header .logo p {
+    font-size: 0.75rem;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+
+  .table-view table {
+    font-size: 0.8rem;
+  }
+
+  /* Ajuste nas imagens */
+  .foto-container img {
+    width: 100%;
+  }
+}
+

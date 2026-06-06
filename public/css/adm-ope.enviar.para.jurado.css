@@ -1,0 +1,347 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* Container principal */
+.container7 {
+    padding: 20px;
+    width: 100%;
+}
+
+.selection-panel{
+    width: 100%;
+}
+
+/* Título */
+h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+#trocar-categoria, #trocar-roda {
+    display: inline-flex !important; /* Mantém na linha e permite alinhar ícones */
+    width: calc(50% - 10px) !important; /* Faz cada um ocupar metade da tela menos o espaço entre eles */
+    max-width: 250px; /* Evita que fiquem gigantes em telas de computador */
+    margin: 5px !important;
+    vertical-align: middle;
+    white-space: nowrap; /* Garante que o texto não quebre */
+    justify-content: center;
+}
+
+/* Container para os elementos dentro de selection-group */
+.selection-group {
+    display: flex;
+    align-items: center;  /* Alinha os itens verticalmente no centro */
+    gap: 10px;  /* Espaço entre os elementos */
+    flex-wrap: nowrap;  /* Impede a quebra para a linha seguinte */
+    width: 100%;  /* Garante que a div ocupe toda a largura da tela */
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+}
+
+/* Estilo para os labels */
+.selection-group label {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+/* Estilo para os selects */
+.selection-group select {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: auto;  /* O select vai encolher ou crescer conforme necessário */
+}
+
+/* Estilo para os botões */
+.selection-group button {
+    padding: 10px 20px;
+    background-color: #1a73e8;  /* Cor inicial dos botões */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+/* Efeito de hover nos botões */
+.selection-group button:hover {
+    background-color: #005bb5; /* Cor ao passar o mouse */
+}
+
+
+/* Remover a seleção de outros botões */
+.selection-group button:not(.selected):hover {
+    background-color: #005bb5; /* Cor ao passar o mouse, para botões não selecionados */
+}
+
+.btn-fase.active {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+    color: #000;
+    
+}
+
+.btn-fase.active:hover {
+    border-color: #ff6b35;
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+    transform: scale(1.05);
+}
+
+/* Container para os elementos dentro de selection-group1 */
+.selection-group1 {
+    display: flex;
+   /* align-items: center;  /* Alinha os itens verticalmente no centro */
+    gap: 20px;  /* Espaço entre os elementos */
+    flex-wrap: nowrap;  /* Impede a quebra para a linha seguinte */
+    width: 100%;
+    overflow-x: auto; /* Permite rolagem horizontal se o conteúdo ultrapassar a largura */
+}
+
+/* Estilo para os labels */
+.selection-group1 label {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+/* Estilo para os selects */
+.selection-group1 select {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;  /* Define uma largura fixa para os selects */
+}
+
+/* Estilo para a tabela */
+.selection-group1 #atleta-jogo {
+    flex: 1;  /* A tabela irá ocupar o restante do espaço disponível */
+    overflow-x: auto;  /* Permite rolagem horizontal caso necessário */
+    max-width: 100%;  /* Garante que a tabela ocupe todo o espaço disponível */
+    margin-left: 20px;
+}
+
+.selection-group1 table {
+    width: 100%;  /* A tabela ocupa toda a largura disponível */
+    border-collapse: collapse;
+}
+
+.selection-group1 th, .selection-group1 td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.selection-group1 th {
+    background-color: #f2f2f2;
+}
+
+.fase-nome {
+    color: #f2f2f2;
+    font-size: 20px;
+}
+
+
+
+/* Labels e selects */
+label {
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+/* Estilo dos selects */
+select {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.empty-message {
+    text-align: center;
+    font-style: italic;
+}
+
+/* Botões de fase */
+.fase-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #005bb5;
+}
+
+#trocar-categoria-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: none; /* Inicialmente oculta */
+  z-index: 1000;
+}
+
+#trocar-categoria-container select {
+  margin: 10px 0;
+}
+
+#trocar-categoria-container button {
+  margin-top: 10px;
+}
+
+/* Estilo para o contêiner dos botões */
+.botao23 {
+    display: flex;                /* Usando flexbox para disposição dos botões */
+    gap: 10px;                    /* Espaçamento de 10px entre os botões */
+    justify-content: center;      /* Alinha os botões ao centro */
+    margin-top: 20px;             /* Espaçamento superior */
+    width: 100%;                  /* Garante que o contêiner ocupe toda a largura disponível */
+    flex-wrap: wrap;              /* Permite que os botões se movam para a linha seguinte se necessário */
+}
+
+/* Estilo para os botões */
+.botao23 .btn {
+    padding: 10px 20px;           /* Ajusta o padding dos botões */
+    font-size: 16px;              /* Tamanho da fonte */
+    cursor: pointer;             /* Altera o cursor para pointer ao passar por cima */
+    border: 2px solid #007BFF;    /* Borda azul para os botões */
+    border-radius: 5px;           /* Borda arredondada */
+    background-color: #007BFF;    /* Fundo azul */
+    color: white;                 /* Cor do texto */
+    transition: background-color 0.3s ease; /* Transição suave */
+    flex-shrink: 0;               /* Impede que os botões encolham */
+}
+
+/* Efeito ao passar o mouse sobre os botões */
+.botao23 .btn:hover {
+    background-color: #0056b3;    /* Cor de fundo ao passar o mouse */
+}
+
+
+/* Responsividade para diferentes tamanhos de tela */
+
+/* Para telas grandes (1600px) */
+@media only screen and (min-width: 1600px) {
+    .selection-group {
+        width: 100%;
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+
+    .selection-group1 {
+        width: 100%;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .fase-buttons {
+        justify-content: flex-start;
+    }
+
+    .btn {
+        flex: 1 1 150px;
+        padding: 12px;
+    }
+}
+
+/* Para telas médias (1024px) */
+@media only screen and (min-width: 1024px) and (max-width: 1599px) {
+    .selection-group, .selection-group1 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .fase-buttons {
+        justify-content: space-between;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+
+/* Para telas pequenas (768px) */
+@media only screen and (max-width: 1023px) {
+    .selection-group, .selection-group1 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .fase-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Para dispositivos muito pequenos (480px) */
+@media only screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .selection-group, .selection-group1 {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .fase-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+}

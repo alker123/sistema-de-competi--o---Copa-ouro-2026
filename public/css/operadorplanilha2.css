@@ -1,0 +1,355 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#h2-1 {
+    color: #000;
+}
+
+/* --- ESTILO PARA OS NOVOS LABELS --- */
+label[for="seletor-categoria125"],
+label[for="seletor-fase-grupo1"],
+.label-categoria1 {
+    color: #3f4444; /* Cinza médio elegante */
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+/* --- ESTILO PARA OS NOVOS SELECTS --- */
+#seletor-categoria125, 
+#seletor-fase-grupo1,
+.select-estilizado3 {
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #bdc3c7;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+/* Feedback visual ao focar ou passar o mouse */
+#seletor-categoria125:focus, 
+#seletor-fase-grupo1:focus,
+#seletor-categoria1:hover,
+#seletor-fase-grupo1:hover {
+    border-color: #3498db; /* Azul ao interagir */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* --- ESTILO DO SELECT DE CATEGORIA 1 --- */
+select#seletor-categoria125.select-estilizado33 {
+    background-color: #f8f9fa; /* Fundo cinza bem clarinho */
+    color: #2c3e50;           /* Texto em azul marinho escuro */
+    border: 2px solid #3498db; /* Borda azul vibrante para destaque */
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    appearance: none;         /* Remove a seta padrão do navegador (opcional) */
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20width%3D"292.4"%20height%3D"292.4"><path%20fill%3D"%233498db"%20d%3D"M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z"%2F><%2Fsvg>'); /* Seta personalizada azul */
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px auto;
+    padding-right: 30px;      /* Espaço para a seta */
+}
+
+/* Efeito ao passar o mouse */
+#seletor-categoria125.select-estilizado33:hover {
+    background-color: #ffffff;
+    border-color: #2980b9; /* Azul um pouco mais escuro */
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+}
+
+/* Estilo das opções dentro do select */
+#seletor-categoria125.select-estilizado33 option {
+    background-color: white;
+    color: #333;
+}
+
+.botoes-acoes {
+    display: flex;
+    flex-wrap: wrap;    /* O SEGREDO: Faz os botões pularem para a linha de baixo */
+    gap: 8px;           /* Espaçamento igual entre cada botão */
+    margin: 15px 0;
+    width: 100%;
+    justify-content: flex-start; /* Alinha os botões à esquerda */
+}
+
+#voltarParaTabelaPrincipal, #oitavas, #quartas, #semifinal, #final, #enviar1, 
+ #PDF1, #salvar2, #terceiro1, #segundo1, #imprimir2 {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#voltarParaTabelaPrincipal:hover, #oitavas:hover, #quartas:hover, 
+#semifinal:hover, #final:hover, #enviar1:hover, #PDF1:hover, 
+#salvar2:hover, #terceiro1:hover, #segundo1:hover, #imprimir2:hover {
+    background: #c9302c; /* Vermelho mais escuro e vivo */
+    transform: translateY(-1px); /* Sobe de leve o botão */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Aumenta a sombra */
+}
+
+/* --- AO CLICAR/APERTAR (ACTIVE) --- */
+#voltarParaTabelaPrincipal:active, #oitavas:active, #quartas:active, 
+#semifinal:active, #final:active, #enviar1:active, #PDF1:active, 
+#salvar2:active, #terceiro1:active, #segundo1:active, #imprimir2:active {
+    background: #ac2925; /* Vermelho bem profundo */
+    transform: translateY(1px); /* "Afunda" o botão ao clicar */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Diminui a sombra */
+}
+
+/* --- CONTAINER QUE PERMITE O SCROLL NO CELULAR --- */
+.scroll-tabela1 {
+    width: 100%;
+    overflow-x: auto; /* Ativa o scroll se a tela for menor que 850px */
+}
+
+
+/* Colunas Pequenas (Ajustadas para % para somar 100) */
+#sel           { width: 4%; }  /* Aproximadamente 40px em telas médias */
+#foto3         { width: 5%; }  /* Espaço seguro para a foto de 50px */
+#posicao       { width: 6%; }
+
+/* Colunas Principais */
+#atleta1       { width: 15%; } /* Aumentado para equilibrar a soma */
+#categoria1    { width: 17%; }
+
+/* Colunas de Notas e Resultados */
+/* Usei as classes .jogo para facilitar */
+.jogo1, .jogo2, .jogo3, .jogo4 { width: 5%; } /* 8% x 4 = 32% */
+
+#notaFinal     { width: 8%; }
+#classificado  { width: 12%; } /*14%*/
+
+/* SOMA FINAL: 
+   4 + 5 + 6 + 20 + 15 + 28 (jogos) + 8 + 14 = 100% 
+*/
+
+/* --- REGRAS CRÍTICAS PARA FUNCIONAR --- */
+#tabela-secundaria1 {
+    width: 100%;
+    min-width: 900px; /* Deve ser igual ao min-width do grid */
+    border-collapse: collapse;
+    table-layout: fixed; /* Essencial para respeitar as porcentagens */
+}
+
+
+/* --- AJUSTE DO CABEÇALHO --- */
+#tabela-secundaria1 th {
+    background: #2c3e50;
+    color: white;
+    font-size: 10px;
+    padding: 10px 5px;
+    border: 1px solid #1a252f;
+    text-transform: uppercase;
+}
+
+/* Ajuste específico para as colunas de Jogo que são curtas */
+.jogo1, .jogo2, .jogo3, .jogo4 {
+    font-size: 10px; /* Fonte menor para colunas de 8% */
+}
+
+#tabela-secundaria1 td {
+    padding: 10px 5px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#tabela-secundaria1 th, 
+#tabela-secundaria1 td {
+    overflow: hidden;
+    text-overflow: ellipsis; /* Coloca "..." se o nome for maior que a célula */
+    white-space: nowrap; 
+    padding: 8px 2px;
+}
+
+/* --- ESTILO PARA FOTO DO ATLETA --- */
+img.foto-atleta {
+    width: 45px;          /* Largura Travada */
+    height: 45px;         /* Altura IGUAL à largura (para ser um círculo) */
+    border-radius: 50%;   /* Transforma o quadrado em círculo */
+    object-fit: cover;    /* O SEGREDO: Corta as bordas sem esticar a foto */
+    object-position: center; /* Mantém o rosto do atleta centralizado */
+    display: block;       /* Evita espaços vazios indesejados abaixo */
+    margin: 0 auto;       /* Centraliza horizontalmente na célula da tabela */
+    border: 2px solid #400de7; /* Opcional: Borda branca elegante */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* Opcional: Sombra suave */
+}
+
+
+/* Zebrado para facilitar a leitura */
+#tabela-secundaria1 tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Destaque ao passar o mouse */
+#tabela-secundaria1 tbody tr:hover {
+    background-color: #ebf5fb;
+}
+
+/* Mensagem de Vazio */
+.empty-message {
+    padding: 40px !important;
+    color: #95a5a6;
+    font-style: italic;
+    font-size: 16px;
+}
+
+/* --- MEDIA QUERIES PARA AJUSTE FINO --- */
+
+/* --- ESTILO PARA TELAS PEQUENAS (LIMITE 350px) --- */
+@media screen and (max-width: 350px) {
+    
+    /* 1. CONTAINER DE BOTÕES */
+    .container-botoes {
+        display: flex;
+        flex-wrap: wrap; /* Faz os botões pularem linha */
+        gap: 4px;
+        justify-content: center;
+    }
+
+    /* Ajuste dos botões IDs e classe */
+    #voltarParaTabelaPrincipal, #oitavas, #quartas, #semifinal, #final, 
+    #enviar1, #PDF1, #salvar2, #terceiro1, #segundo1, .botoes-acoes {
+        padding: 6px 4px;
+        font-size: 9px;   /* Fonte mínima para leitura */
+        flex: 1 1 45%;    /* Coloca 2 botões por linha */
+        text-align: center;
+        min-width: 70px;
+    }
+
+    /* 2. ESCONDER COLUNAS (Otimização máxima de espaço) */
+    #foto3, #posicao, #categoria1, 
+    .col-foto, .col-pos, .col-cat { 
+        display: none !important; 
+    }
+
+    /* 3. AJUSTE DA TABELA */
+    #tabela-secundaria1 {
+        min-width: 100% !important; /* Ocupa toda a largura do celular */
+        table-layout: fixed;
+    }
+
+    /* 4. REDISTRIBUIÇÃO DAS COLUNAS RESTANTES */
+    #atleta1 { width: 30%; }
+    .jogo1, .jogo2, .jogo3, .jogo4 { width: 12%; }
+    #notaFinal { width: 10%; }
+    #classificado { width: 12%; }
+
+    /* 5. TEXTO DO CABEÇALHO (TH) */
+    #tabela-secundaria1 th {
+        font-size: 8px; /* Diminuição extrema para caber */
+        white-space: normal !important; /* Quebra linha obrigatoriamente */
+        padding: 4px 1px;
+        line-height: 1;
+        height: auto;
+    }
+
+    /* 6. TEXTO DAS CÉLULAS (TD) */
+    #tabela-secundaria1 td {
+        font-size: 10px;
+        padding: 4px 1px;
+    }
+}
+
+/* --- ESTRATÉGIA PARA TELAS MUITO PEQUENAS (Abaixo de 600px) --- */
+@media screen and (max-width: 600px) {
+    /* Esconde colunas menos importantes para caber tudo na tela */
+    #foto3, #posicao, #categoria1, 
+    .col-foto, .col-pos, .col-cat { 
+        display: none !important; 
+    }
+
+    .botoes-acoes {
+        padding: 8px 12px;
+        font-size: 11px;  /* Diminui a fonte para caber mais botões por linha */
+        flex-grow: 1;     /* Faz os botões ocuparem a largura disponível */
+        text-align: center;
+    }
+
+    /* Redistribui o espaço para o Atleta e Notas */
+    #atleta1 { width: 35%; }
+    .jogo1, .jogo2, .jogo3, .jogo4 { width: 10%; }
+    #notaFinal { width: 12%; }
+    #classificado { width: 13%; }
+
+    #tabela-secundaria1 th {
+        font-size: 9px;
+    }
+}
+
+/* --- CONFIGURAÇÃO PARA TELAS GRANDES (A partir de 1500px até 2000px+) --- */
+@media screen and (min-width: 1500px) {
+    
+    /* 1. LIMITAR LARGURA MÁXIMA */
+    /* Não deixe a tabela espalhar por 2000px inteiros, 
+       isso cansa os olhos. O ideal é centralizar. */
+    .scroll-tabela1 {
+        max-width: 1800px; 
+        margin: 0 auto; /* Centraliza a tabela na tela */
+    }
+
+    /* 2. AUMENTAR FONTES (Escalabilidade) */
+    #tabela-secundaria1 th {
+        font-size: 15px;      /* Cabeçalho mais legível */
+        height: 70px;         /* Mais respiro no topo */
+        padding: 15px 5px;
+    }
+
+    #tabela-secundaria1 td {
+        font-size: 16px;      /* Texto maior para monitor grande */
+        padding: 15px 8px;    /* Células mais altas e espaçosas */
+    }
+
+    /* 3. AJUSTE DE COLUNAS PARA TELA LARGA */
+    /* Em 2000px, podemos dar muito mais espaço para o nome do Atleta */
+    #sel           { width: 3%; }
+    #foto3         { width: 6%; }
+    #posicao       { width: 5%; }
+    #atleta1       { width: 25%; } /* Nome do atleta bem visível */
+    #categoria1    { width: 15%; }
+    .jogo1, .jogo2, .jogo3, .jogo4 { width: 7%; } 
+    #notaFinal     { width: 8%; }
+    #classificado  { width: 10%; }
+
+    /* 4. AUMENTAR A FOTO NO DESKTOP */
+    img.foto-atleta {
+        width: 60px;  /* Foto maior em monitores grandes */
+        height: 60px;
+        border-width: 3px;
+    }
+
+    /* 5. BOTÕES EM LINHA ÚNICA */
+    .container-botoes {
+        justify-content: center; /* Centraliza os botões */
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    #voltarParaTabelaPrincipal, .btn-acao, #oitavas, #quartas, 
+    #semifinal, #final, #enviar1 {
+        padding: 12px 25px;
+        font-size: 14px;
+        flex: none; /* Impede que os botões estiquem, mantendo o tamanho fixo */
+        width: auto;
+    }
+}

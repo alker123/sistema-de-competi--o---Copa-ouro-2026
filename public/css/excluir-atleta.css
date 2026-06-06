@@ -1,0 +1,100 @@
+/* Container Principal - Excluir Atleta */
+.excluir-atleta2 {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    
+    /* Lógica Expansiva (350px a 2000px) */
+    min-width: 350px;
+    max-width: 2000px;
+    width: 90%;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Cabeçalho de Alerta */
+.fasfa {
+    color: #c0392b; /* Vermelho mais forte para exclusão */
+    margin: 0 0 10px 0;
+    border-bottom: 2px solid #c0392b;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilização dos Selects */
+.excluir-atleta2 select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.excluir-atleta2 select:focus {
+    border-color: #c0392b;
+    outline: none;
+}
+
+/* Select Múltiplo (Lista de Atletas) */
+#lista-atletas {
+    height: 180px; /* Altura generosa para facilitar a seleção */
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Botão de Excluir (Destaque Vermelho) */
+#excluir-atleta2-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+#excluir-atleta2-btn:hover {
+    background-color: #c0392b;
+}
+
+/* --- AJUSTE PARA TELAS LARGAS (Desktop / Ultra-Wide) --- */
+@media (min-width: 1000px) {
+    .excluir-atleta2 {
+        display: grid;
+        /* Categorias em uma coluna menor, Atletas em uma maior */
+        grid-template-columns: 1fr 2fr; 
+        gap: 25px;
+        padding: 40px;
+        align-items: start;
+    }
+
+    .fasfa, 
+    #excluir-atleta2-btn {
+        grid-column: span 2;
+    }
+
+    /* Ocupa a altura total disponível na grade */
+    #lista-atletas {
+        height: 100%;
+        min-height: 250px;
+    }
+
+    
+}

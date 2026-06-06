@@ -1,0 +1,88 @@
+/* Container Principal - Excluir Categoria */
+.excluir-categoria2 {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    
+    /* Lógica Expansiva (350px a 2000px) */
+    min-width: 350px;
+    max-width: 2000px;
+    width: 90%;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Cabeçalho de Alerta */
+.fasfa-tag {
+    color: #d32f2f; /* Vermelho escuro para exclusão de categorias */
+    margin: 0 0 10px 0;
+    border-bottom: 2px solid #d32f2f;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Select Múltiplo de Categorias */
+#lista-categorias {
+    width: 100%;
+    height: 200px; /* Altura fixa para mobile */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+#lista-categorias:focus {
+    border-color: #d32f2f;
+    outline: none;
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.2);
+}
+
+/* Botão de Excluir */
+#excluir-categoria2-btn {
+    background-color: #d32f2f;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+#excluir-categoria2-btn:hover {
+    background-color: #b71c1c;
+}
+
+/* --- AJUSTE PARA TELAS LARGAS (Desktop / Ultra-Wide) --- */
+@media (min-width: 1000px) {
+    .excluir-categoria2 {
+        display: grid;
+        grid-template-columns: 1fr; /* Mantém uma coluna para a lista longa */
+        gap: 20px;
+        padding: 40px;
+    }
+
+    /* Em telas grandes, a lista de categorias pode ser bem mais alta */
+    #lista-categorias {
+        height: 350px; 
+        font-size: 18px; /* Texto levemente maior para facilitar leitura */
+    }
+
+   
+}

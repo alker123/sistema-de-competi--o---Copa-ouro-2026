@@ -1,0 +1,92 @@
+/* Container Principal da Categoria */
+.adicionar-categoria {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    
+    /* Lógica Expansiva */
+    min-width: 350px;
+    max-width: 2000px;
+    width: 90%;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Cabeçalho com ícone */
+#categoria3 {
+    color: #333;
+    margin: 0 0 10px 0;
+    border-bottom: 2px solid #ffc107; /* Cor diferente para diferenciar de Atletas */
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+}
+
+/* Labels */
+.adicionar-categoria label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Input de Texto */
+#nome-categoria1 {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#nome-categoria1:focus {
+    border-color: #ffc107;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.2);
+}
+
+/* Botão Salvar (Reutilizando sua classe btn-large1) */
+.adicionar-categoria .btn-large2 {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    transition: background 0.2s;
+}
+
+.adicionar-categoria .btn-large2:hover {
+    background-color: #218838;
+}
+
+/* --- AJUSTE PARA TELAS LARGAS (Desktop / Ultra-Wide) --- */
+@media (min-width: 1000px) {
+    .adicionar-categoria {
+        display: grid;
+        grid-template-columns: 1fr auto; /* Input ocupa o espaço e botão fica ao lado ou abaixo */
+        align-items: end;
+        gap: 20px;
+        padding: 40px;
+    }
+
+    #categoria3 {
+        grid-column: span 2;
+    }
+
+   
+}

@@ -1,0 +1,326 @@
+/* --- 1. CONFIGURAÇÕES GERAIS E RESET --- */
+:root {
+    --primary-color: #2563eb;
+    --bg-color: #f8fafc;
+    --text-color: #1e293b;
+    --fundo-color: #4e5052;
+    --card-bg: #ffffff;
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Força todas as imagens a serem flexíveis e nunca maiores que seu contêiner */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+body {
+    background-color: var(--fundo-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    padding: 20px;
+}
+
+.loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    border: 6px solid rgba(142, 147, 141, 0.3);
+    border-top: 6px solid #f60b0b;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- 2. CONTAINER PRINCIPAL (Centralizado e Responsivo) --- */
+.login-container {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 400px;
+    min-height: 480px; /* Garante um tamanho bom na vertical */
+    padding: 2.5rem 2rem; /* Aumentei o respiro interno em cima/baixo */
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 25px rgba(58, 23, 252, 0.05);
+    text-align: center;
+    
+    /* Centralização interna */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espalha os itens (header, form, clock) */
+}
+
+.login-container {
+    height: 500px; /* Altura fixa */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo dentro da altura */
+}
+
+/* --- 3. LOGO E CABEÇALHO --- */
+.logo-voandoAlto {
+    margin-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Define um tamanho máximo específico e responsivo para a logo */
+.logo-voandoAlto img {
+    max-width: 200px; /* Tamanho controlado para PC */
+    width: 50%; /* Ocupa 50% da largura da tela em dispositivos pequenos */
+    height: auto;
+}
+
+.login-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.login-header p {
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+
+/* --- 4. FORMULÁRIO E INPUTS --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-login {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-login:hover {
+    background-color: #1d4ed8;
+}
+
+/* --- 5. BOTÕES DE IDIOMA (Centralizados e Proporcionais) --- */
+.lang-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.lang-buttons button {
+    background: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: border-color 0.2s;
+}
+
+.lang-buttons button.active {
+    border-color: var(--primary-color);
+}
+
+/* Define um tamanho fixo e controlado para as bandeiras */
+.lang-buttons img {
+    width: 30px; /* Tamanho controlado */
+    height: 30px;
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+}
+
+/* --- 6. RELÓGIO E FOOTER --- */
+#clock {
+    background-color: transparent;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #475569;
+    /*background: rgba(0, 0, 0, 0.05);*/
+    border-radius: 8px;
+    display: inline-block;
+    width: 100%;
+}
+
+#clock span {
+    margin-right: 5px;
+}
+
+#clock strong {
+    color: #2563eb; /* Cor azul para destacar a hora */
+}
+
+.footer {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+/* --- 7. ADAPTAÇÕES PARA TELAS DIFERENTES (Media Queries) --- */
+
+/* TVs e Telas Grandes (Aumenta o tamanho geral para visualização à distância) */
+@media (min-width: 1920px) {
+    html {
+        font-size: 20px; /* Aumenta a base do rem */
+    }
+    .login-container {
+        max-width: 500px; /* Expande um pouco o container */
+    }
+}
+
+/* Ajustes para Celulares Antigos e Telas Pequenas */
+@media (max-width: 360px) {
+    body {
+        padding: 10px; /* Reduz o espaço nas bordas da tela */
+    }
+    .login-container {
+        padding: 1.5rem 1rem; /* Diminui o preenchimento interno */
+        width: 95%; /* Garante que o container use quase toda a largura */
+    }
+    .login-header h1 {
+        font-size: 1.4rem; /* Diminui o tamanho do título */
+    }
+    .logo-voandoAlto img {
+        max-width: 150px; /* Limita o tamanho da logo para não empurrar o resto */
+        margin-bottom: 1rem;
+    }
+    input {
+        padding: 0.6rem; /* Diminui o tamanho dos campos de texto */
+        font-size: 0.9rem;
+    }
+    .btn-login {
+        padding: 0.6rem;
+    }
+
+    #clock {
+        font-size: 0.8rem;
+        padding: 5px;
+    }
+}
+
+/* =========================================
+   NOTEBOOK 15.4"
+   AJUSTE MENOR
+   ========================================= */
+
+@media screen and (min-width: 1200px) and (max-width: 1366px) {
+
+    html {
+        zoom: 0.92;
+    }
+
+    body {
+        padding: 12px;
+    }
+
+    /* Container principal */
+    .login-container {
+        max-width: 420px !important;
+        height: 510px !important;
+        min-height: 510px !important;
+        padding: 2.2rem 1.8rem !important;
+        border-radius: 14px !important;
+    }
+
+    /* Logo */
+    .logo-voandoAlto {
+        margin-bottom: 1.4rem !important;
+    }
+
+    .logo-voandoAlto img {
+        max-width: 210px !important;
+        width: 55% !important;
+    }
+
+    /* Cabeçalho */
+    .login-header h1 {
+        font-size: 1.7rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+
+    .login-header p {
+        font-size: 0.92rem !important;
+        margin-bottom: 1.4rem !important;
+    }
+
+    /* Formulário */
+    form {
+        gap: 0.9rem !important;
+    }
+
+    input {
+        padding: 0.75rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    .btn-login {
+        padding: 0.75rem !important;
+        font-size: 1rem !important;
+    }
+
+    /* Idiomas */
+    .lang-buttons {
+        gap: 10px !important;
+        margin-bottom: 1.2rem !important;
+    }
+
+    .lang-buttons img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    /* Relógio */
+    #clock {
+        font-size: 0.9rem !important;
+        margin-top: 14px !important;
+    }
+
+    /* Footer */
+    .footer {
+        font-size: 0.8rem !important;
+        margin-top: 1.4rem !important;
+    }
+}

@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- ESTILO DOS TÍTULOS E LABELS --- */
+
+/* --- ESTILO DOS TÍTULOS E LABELS --- */
+
+/* Título principal do Jogo */
+h2 {
+    color: #232424; /* Cinza azulado profundo para elegância */
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* O texto que muda dinamicamente (Selecionar) */
+#ritmo-atual {
+    color: #181616; /* Vermelho para destacar o que o operador escolheu */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Rótulos (Fase e Categoria) */
+label[for="seletor-fase-grupo"], 
+.label-categoria {
+    color: #7f8c8d; /* Cinza médio para não brigar com o título */
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+/* --- ESTILO DOS SELETORES (SELECTS) --- */
+
+#seletor-ritmo, 
+#seletor-fase-grupo, 
+#seletor-categoria {
+    background-color: #ffffff;
+    color: #333333; /* Cor da letra dentro da caixa */
+    border: 1px solid #bdc3c7;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+/* Cor da letra muda ao focar no seletor */
+#seletor-ritmo:focus, 
+#seletor-fase-grupo:focus, 
+#seletor-categoria:focus {
+    border-color: #3498db; /* Borda azul ao clicar */
+    color: #2c3e50;
+}
+
+/* --- CONTAINER PRINCIPAL --- */
+.tabela-container1 {
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 15px;
+    background: #fff;
+}
+
+.scroll-tabela {
+    width: 100%;
+    overflow-x: auto; /* Ativa o scroll se a tela for menor que 850px */
+}
+
+/* --- ALINHAMENTO DOS ÁRBITROS --- */
+.container-nomes-arbitros {
+    display: grid;
+    /* Soma exata: 5% + 28% + 23% + 11% + 11% + 11% + 11% = 100% */
+    /* Ajustei as notas para 11% para dar mais espaço aos nomes e centralizar melhor */
+    grid-template-columns: 5% 28% 22% 11% 11% 11% 11%;
+    min-width: 900px; 
+    margin-bottom: -1px;
+    align-items: end;
+}
+
+/* Pula as colunas SEL, ATLETA e CATEGORIA */
+.spacer {
+    grid-column: span 3;
+}
+
+/* Estilo unificado para os inputs dos árbitros */
+.input-arbitro-alinhado, #arbitroA, #arbitroB, #arbitroC {
+    width: 100%;
+    background: transparent;
+    border: none;
+    text-align: center; /* Centraliza o nome exatamente sobre a nota */
+    font-size: 11px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-transform: uppercase;
+    padding: 8px 0;
+    margin: 0; /* Removidos os margin-left que desalinhavam */
+    box-sizing: border-box;
+}
+
+.spacer-media {
+    width: 100%;
+}
+
+/* --- ESTILO DA TABELA --- */
+#tabela-principal1 {
+    width: 100%;
+    min-width: 900px; /* Deve ser igual ao min-width do grid */
+    border-collapse: collapse;
+    table-layout: fixed; /* Essencial para respeitar as porcentagens */
+}
+
+/* Definição de larguras espelhada no Grid dos árbitros */
+.col-sel     { width: 5%; }
+.col-atleta  { width: 28%; }
+.col-cat     { width: 23%; }
+.col-nota    { width: 11%; } /* Classe usada nas 3 notas (A, B, C) */
+.col-media   { width: 11%; }
+
+#tabela-principal1 th {
+    background: #2c3e50;
+    color: white;
+    font-size: 12px;
+    padding: 10px 5px;
+    border: 1px solid #1a252f;
+    text-transform: uppercase;
+}
+
+#tabela-principal1 td {
+    padding: 10px 5px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- CABEÇALHO SUPERIOR (BOTÕES E FILTROS) --- */
+.botoes-acoes > div {
+    display: flex !important;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.botoes-acoes h2 { font-size: 16px; margin: 0; white-space: nowrap; }
+.botoes-acoes select { padding: 5px; border-radius: 4px; border: 1px solid #ccc; }
+
+#PDF0, #MediaTotal, #excluir, #imprimir1 {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- EFEITO AO PASSAR O CURSOR (HOVER) --- */
+#PDF0:hover, #imprimir1:hover { background: #c0392b; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+#MediaTotal:hover { background: #c0392b; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+#excluir:hover { background: #c0392b; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+
+/* --- EFEITO AO CLICAR (ACTIVE) --- */
+#PDF0:active, #MediaTotal:active, #excluir:active, #imprimir1:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Responsividade Mobile (350px) */
+@media screen and (max-width: 600px) {
+    .container-arbitros, #tabela-principal1 {
+        min-width: 750px; /* Reduz um pouco o aperto no mobile */
+    }
+}

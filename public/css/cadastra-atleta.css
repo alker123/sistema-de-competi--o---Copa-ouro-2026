@@ -1,0 +1,172 @@
+/* Container Principal */
+.adicionar-atleta {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    
+    /* Lógica Expansiva */
+    min-width: 350px;
+    max-width: 2000px;
+    width: 90%; /* Ocupa a maior parte da tela em dispositivos menores */
+    
+    /* Organização interna */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Cabeçalho */
+#atleta2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilização dos Labels */
+.adicionar-atleta label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: -10px; /* Aproxima o label do input */
+}
+
+/* Inputs e Selects */
+.adicionar-atleta input[type="text"],
+.adicionar-atleta select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box; /* Garante que o padding não estoure a largura */
+    transition: border-color 0.2s;
+}
+
+.adicionar-atleta input:focus, 
+.adicionar-atleta select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Container da Foto */
+.foto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    padding: 20px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+#fotoPerfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+#botaoFoto {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#botaoFoto:hover {
+    background-color: #5a6268;
+}
+
+/* Botão Salvar */
+.btn-large2 {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-large2:hover {
+    background-color: #218838;
+}
+
+/* Ajuste para telas largas (Desktop e Ultra-Wide) */
+@media (min-width: 1000px) {
+    .adicionar-atleta {
+        display: grid;
+        /* Cria duas colunas iguais */
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px;
+        align-items: start;
+        padding: 40px;
+    }
+
+    /* Faz o Título ocupar as duas colunas */
+    #atleta2 {
+        grid-column: span 2;
+        font-size: 24px;
+    }
+
+    /* Container da Foto ocupa a segunda coluna e se estende para baixo */
+    .foto-container {
+        grid-column: 2;
+        grid-row: span 3; /* Fica ao lado dos inputs de nome, numero e categoria */
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Ajuste dos Labels e Inputs para não ficarem colados */
+    .adicionar-atleta label {
+        grid-column: 1;
+    }
+
+    .adicionar-atleta input, 
+    .adicionar-atleta select {
+        grid-column: 1;
+        margin-bottom: 10px;
+    }
+
+    /* Faz o Botão Salvar ocupar as duas colunas na base */
+    .btn-large2 {
+        grid-column: span 2;
+        margin-top: 20px;
+        padding: 20px;
+    }
+}
+
+/* Ajuste específico para telas gigantes (perto de 2000px) */
+@media (min-width: 1800px) {
+    .adicionar-atleta {
+        max-width: 1200px; /* Evita que os inputs fiquem longos demais para ler */
+        margin: 50px auto;
+        border: 1px solid #eee;
+    }
+}

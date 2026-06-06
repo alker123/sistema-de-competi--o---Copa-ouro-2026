@@ -1,0 +1,620 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden; /* bloqueia só horizontal */
+    overflow-y: auto;   /* mantém rolagem vertical */
+}
+
+/* =========================================
+   1. ESTRUTURA E FUNDO (LIMPEZA TOTAL)
+   ========================================= */
+#container-tela {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    color: #fff;
+    font-family: 'Arial Black', sans-serif;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+#background-video1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.4; /* Ajuste a opacidade para não atrapalhar a leitura */
+    z-index: -1;
+    background-size: cover;
+    background: #626161;
+}
+
+/* Contêiner do vídeo */
+.video-background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    background-color: black;
+    background-size: cover;
+}
+
+/* Vídeo responsivo */
+#background-video2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    filter: brightness(0.8);
+    background-size: cover;
+    background: #626161;
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    background: #626161;
+    z-index: -1;
+}
+
+/* Overlay base para efeitos de luz */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    pointer-events: none;
+    filter: blur(10px);  /* suaviza a luz */
+    opacity: 0.25;       /* intensidade base */
+}
+
+/* Raios coloridos */
+.light-gold {
+    background: linear-gradient(
+        120deg,
+        rgba(255, 200, 100, 0) 0%,
+        rgba(255, 220, 150, 0.15) 50%,
+        rgba(255, 200, 100, 0) 100%
+    );
+    animation: sweepGold 10s linear infinite;
+}
+
+.light-blue {
+    background: linear-gradient(
+        100deg,
+        rgba(100, 200, 255, 0) 0%,
+        rgba(120, 220, 255, 0.12) 50%,
+        rgba(100, 200, 255, 0) 100%
+    );
+    animation: sweepBlue 12s linear infinite;
+    opacity: 0.2;
+    transform: rotate(15deg);
+}
+
+.light-pink {
+    background: linear-gradient(
+        140deg,
+        rgba(255, 150, 200, 0) 0%,
+        rgba(255, 180, 220, 0.1) 50%,
+        rgba(255, 150, 200, 0) 100%
+    );
+    animation: sweepPink 14s linear infinite;
+    opacity: 0.18;
+    transform: rotate(-10deg);
+}
+
+/* Animações de movimento horizontal */
+@keyframes sweepGold {
+    0% { left: -100%; }
+    50% { left: 0%; }
+    100% { left: 100%; }
+}
+
+@keyframes sweepBlue {
+    0% { left: -120%; }
+    50% { left: 0%; }
+    100% { left: 120%; }
+}
+
+@keyframes sweepPink {
+    0% { left: -90%; }
+    50% { left: 0%; }
+    100% { left: 90%; }
+}
+/* =========================================
+   2. CONTROLES (ESTILO APENAS TEXTO)
+   ========================================= */
+.controles-operador, #input-categoria {
+    position: relative;
+    z-index: 100;
+    padding: 15px 20px;
+    background: transparent; 
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    border: none !important;
+}
+
+.btn-large2, .select-estilizado3, .btn1 {
+    padding: 5px;
+    border: none !important;
+    background: transparent !important;
+    /*color: rgba(255, 255, 255, 0.5) !important;*/
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.btn-large2:hover, .btn1:hover {
+    color: #fff !important;
+    text-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+
+/* Ajuste para o Select não ficar branco */
+.select-estilizado3 {
+    /*background-color: rgba(0, 0, 0, 0.2) !important; 
+    color: rgba(255, 255, 255, 0.8) !important;*/
+    appearance: none; 
+    -webkit-appearance: none;
+    padding: 5px 15px !important;
+    cursor: pointer;
+}
+
+.select-estilizado3 option {
+    background-color: #111 !important; 
+    color: #fff !important;
+    border: none;
+    cursor: pointer;
+}
+
+.select-estilizado3:hover {
+    color: #fff !important;
+    text-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+
+/* =========================================
+   3. ÁREA DE PROJEÇÃO E TÍTULO NEON
+   ========================================= */
+#tela {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    padding: 0 8vw; 
+}
+
+.input-categoria-display {
+    background: transparent !important;
+    border: none !important;
+    color: #f9f7f7;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 900;
+    text-align: center;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    text-shadow: 0 0 10px #f0e5e5, 0 0 20px rgba(255,255,255,0.6), 0 0 40px rgba(255,255,255,0.3);
+    margin-bottom: 3vh;
+}
+
+/* =========================================
+   4. LINHA DO ATLETA (GRID FLEXÍVEL)
+   ========================================= */
+.atleta-row {
+    display: none; 
+    grid-template-columns: auto 2fr 1fr 1.5fr; 
+    align-items: center;
+    gap: 2vw; 
+    height: 22vh;
+    margin: 5px 0;
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    overflow: visible !important;
+}
+
+.atleta-row.mostrar {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    pointer-events: auto;
+}
+
+.foto-container {
+    width: 18vh;
+    height: 18vh;
+    border-radius: 50%;
+    border: 6px solid;
+    overflow: hidden;
+    background: #111;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    flex-shrink: 0;
+}
+
+.foto-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================================
+   5. TEXTOS E NOMES
+   ========================================= */
+.nome-atleta {
+    /*font-size: clamp(1rem, 3.5vw, 3.2rem) !important;*/
+    font-size: clamp(0.5rem, 2.5vw, 2.2rem) !important;
+    font-weight: 900;
+    width: 100% !important;
+    overflow: visible !important; 
+    text-overflow: clip !important; 
+    white-space: nowrap !important;
+    letter-spacing: -1px; 
+}
+
+.input-display {
+    background: transparent !important;
+    border: none !important;
+    color: inherit;
+    font-family: inherit;
+    pointer-events: none;
+    text-transform: uppercase;
+    display: block !important;
+}
+
+.col-detalhes {
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+}
+
+.info-posicao { font-size: 1.4rem; opacity: 0.9; }
+.info-fase { font-size: 1rem; opacity: 0.6; }
+
+.col-nota {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 60px !important; 
+    min-width: 280px; 
+}
+
+.nota-valor {
+    font-size: clamp(2.5rem, 8.5vw, 8.5rem) !important;
+    width: auto !important; 
+    text-align: right;
+    white-space: nowrap !important;
+    overflow: visible !important; 
+    display: inline-block !important;
+}
+
+/* =========================================
+   6. CORES E EFEITO NEON
+   ========================================= */
+.rank-ouro .nome-atleta, .rank-ouro .nota-valor, .rank-ouro .info-posicao { 
+    color: #FFD700 !important; 
+    text-shadow: 0 0 5px #FFD700, 0 0 10px rgba(255, 215, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.3) !important; 
+}
+.rank-ouro .foto-container { 
+    border-color: #FFD700 !important; 
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), inset 0 0 10px rgba(255, 215, 0, 0.4) !important;
+}
+
+.rank-prata .nome-atleta, .rank-prata .nota-valor, .rank-prata .info-posicao { 
+    color: #E0E0E0 !important; 
+    text-shadow: 0 0 5px #FFFFFF, 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.3) !important; 
+}
+.rank-prata .foto-container { 
+    border-color: #E0E0E0 !important; 
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.3) !important;
+}
+
+.rank-bronze .nome-atleta, .rank-bronze .nota-valor, .rank-bronze .info-posicao { 
+    color: #CD7F32 !important; 
+    text-shadow: 0 0 5px #CD7F32, 0 0 10px rgba(205, 127, 50, 0.7), 0 0 20px rgba(205, 127, 50, 0.3) !important; 
+}
+.rank-bronze .foto-container { 
+    border-color: #CD7F32 !important; 
+    box-shadow: 0 0 20px rgba(205, 127, 50, 0.6), inset 0 0 10px rgba(205, 127, 50, 0.4) !important;
+}
+
+.divisor {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    margin: 0;
+}
+
+
+/* =========================================
+   7. RESPONSIVIDADE (SEM ESCONDER NADA)
+   ========================================= */
+
+@media (max-width: 1400px) {
+    #tela { padding: 0 4vw; }
+    .atleta-row { grid-template-columns: 12vh 1.5fr 1fr 1.2fr; gap: 1vw; }
+    .foto-container { width: 12vh; height: 12vh; }
+    .nome-atleta { font-size: 1.1rem !important; }
+    .info-posicao { font-size: 1.1rem; }
+    .info-fase { font-size: 0.8rem; }
+    .col-nota { min-width: 180px !important; padding-right: 20px !important; }
+}
+
+@media (max-width: 1000px) {
+    .atleta-row { 
+        grid-template-columns: 80px 1.2fr 0.8fr 1fr; 
+        height: auto;
+        padding: 10px 0;
+    }
+    .foto-container { width: 80px; height: 80px; border-width: 3px; }
+    .nome-atleta { font-size: 0.75rem !important; white-space: normal !important; } /* Permite quebra se o nome for gigante */
+    .col-detalhes { min-width: 80px; }
+    .info-posicao { font-size: 0.9rem; }
+    .info-fase { font-size: 0.7rem; }
+    .nota-valor { font-size: 3rem !important; }
+    .col-nota { min-width: 100px !important; padding-right: 10px !important; }
+    .input-categoria-display { font-size: 2rem; }
+}
+
+
+
+/* Telas muito pequenas */
+@media (max-width: 540px) {
+    #tela { padding: 0 2vw; }
+    .atleta-row { grid-template-columns: 60px 1.2fr 0.8fr 1fr; gap: 0.5vw; height: auto; padding: 8px 0; }
+    .foto-container { width: 50px; height: 50px; border-width: 2px; }
+    .nome-atleta { font-size: 0.5rem !important; }
+    .info-posicao { font-size: 0.8rem; }
+    .info-fase { font-size: 0.6rem; }
+    .col-nota { min-width: 80px !important; padding-right: 8px !important; }
+    .nota-valor { font-size: 2rem !important; }
+}
+
+/* Telas muito estreitas - celular minúsculo 300px */
+@media (max-width: 375px) {
+    #tela { padding: 0 1vw; }
+    .atleta-row { grid-template-columns: 40px 1fr 0.7fr 0.8fr; gap: 0.5vw; padding: 6px 0; }
+    .foto-container { width: 40px; height: 40px; border-width: 2px; }
+    .nome-atleta { font-size: 0.4rem !important; }
+    .info-posicao { font-size: 0.6rem; }
+    .info-fase { font-size: 0.5rem; }
+    .col-nota { min-width: 60px !important; padding-right: 4px !important; }
+    .nota-valor { font-size: 1.5rem !important; }
+}
+
+/* =========================================
+   TV / PROJETOR / SEGUNDA TELA
+   ========================================= */
+
+@media screen and (min-width: 1900px) and (min-height: 900px) {
+
+    html {
+        zoom: 0.78;
+    }
+
+    #container-tela {
+        overflow: hidden !important;
+    }
+
+    #tela {
+        padding: 0 3vw !important;
+    }
+
+    .atleta-row {
+        height: 18vh !important;
+        gap: 1.5vw !important;
+    }
+
+    .foto-container {
+        width: 150px !important;
+        height: 150px !important;
+        border-width: 5px !important;
+    }
+
+    .nome-atleta {
+        font-size: clamp(35px, 3vw, 75px) !important;
+        line-height: 1 !important;
+    }
+
+    .nota-valor {
+        font-size: clamp(55px, 6vw, 150px) !important;
+        line-height: 1 !important;
+    }
+
+    .info-posicao {
+        font-size: 24px !important;
+    }
+
+    .info-fase {
+        font-size: 18px !important;
+    }
+
+    .input-categoria-display {
+        font-size: clamp(35px, 3vw, 90px) !important;
+        letter-spacing: 4px !important;
+    }
+
+    .col-nota {
+        min-width: 250px !important;
+        padding-right: 30px !important;
+    }
+}
+
+/* Apenas projetores e TVs MUITO grandes */
+@media screen and (min-width: 3000px) {
+
+    #tela {
+        padding: 0 4vw !important;
+    }
+
+    .atleta-row {
+        height: 20vh !important;
+        gap: 2vw !important;
+    }
+
+    .foto-container {
+        width: 240px !important;
+        height: 240px !important;
+        border-width: 8px !important;
+    }
+
+    .nome-atleta {
+        font-size: clamp(60px, 4vw, 120px) !important;
+        line-height: 1 !important;
+    }
+
+    .nota-valor {
+        font-size: clamp(90px, 8vw, 260px) !important;
+        line-height: 1 !important;
+    }
+
+    .info-posicao {
+        font-size: 42px !important;
+    }
+
+    .info-fase {
+        font-size: 30px !important;
+    }
+
+    .input-categoria-display {
+        font-size: clamp(50px, 4vw, 120px) !important;
+        letter-spacing: 10px !important;
+    }
+
+    .col-nota {
+        min-width: 500px !important;
+        padding-right: 100px !important;
+    }
+}
+
+/* =========================================
+   MONITOR 15.4" NOTEBOOK
+   RESOLUÇÃO MÉDIA: 1280x800 / 1366x768
+   ========================================= */
+
+@media screen and (min-width: 1200px) and (max-width: 1366px) {
+
+   /* html {
+        zoom: 0.92;
+    }*/
+
+    #tela {
+        padding: 0 3vw !important;
+    }
+
+    /* Categoria */
+    .input-categoria-display {
+        font-size: clamp(2rem, 3vw, 3.2rem) !important;
+        letter-spacing: 4px !important;
+        margin-bottom: 2vh !important;
+    }
+
+/* Linha atleta */
+.atleta-row {
+    grid-template-columns: 140px 2fr 1fr 1.2fr !important;
+    gap: 1.4vw !important;
+    height: 25vh !important;
+    margin: 8px 0 !important;
+    align-items: center !important;
+}
+
+/* Foto */
+.foto-container {
+    width: 140px !important;
+    height: 140px !important;
+    border-width: 6px !important;
+}
+
+/* Nome */
+.nome-atleta {
+    font-size: clamp(1.4rem, 2.5vw, 2.8rem) !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.1 !important;
+}
+
+/* Informações */
+.info-posicao {
+    font-size: 1.35rem !important;
+}
+
+.info-fase {
+    font-size: 1rem !important;
+}
+
+.col-detalhes {
+    min-width: 130px !important;
+}
+
+/* Nota */
+.col-nota {
+    min-width: 250px !important;
+    padding-right: 28px !important;
+}
+
+.nota-valor {
+    font-size: clamp(4rem, 6.5vw, 7rem) !important;
+    line-height: 1 !important;
+}
+
+    /* Controles */
+    .controles-operador,
+    #input-categoria {
+        gap: 12px !important;
+        padding: 10px 15px !important;
+    }
+
+    .btn-large2,
+    .select-estilizado3,
+    .btn1 {
+        font-size: 0.72rem !important;
+        padding: 4px 6px !important;
+    }
+
+    /* Vídeo */
+    #background-video,
+    #background-video1 {
+        object-fit: cover !important;
+    }
+
+    /* Efeito neon mais suave */
+    .rank-ouro .nome-atleta,
+    .rank-prata .nome-atleta,
+    .rank-bronze .nome-atleta,
+    .rank-ouro .nota-valor,
+    .rank-prata .nota-valor,
+    .rank-bronze .nota-valor {
+        text-shadow:
+            0 0 4px currentColor,
+            0 0 10px rgba(255,255,255,0.25) !important;
+    }
+}
