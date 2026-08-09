@@ -1,4 +1,4 @@
-import { db4 as db } from "./firebase.js";
+import { db4 } from "./firebase.js";
 import { ref, onValue, push, get, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 // 📌 Elementos HTML
@@ -50,7 +50,7 @@ function carregarEnviosParaOperador() {
   modoAtual = "classificatória";
   atualizarFaseAtiva("classificatória", btnClassificatoria);
   
-  onValue(ref(db, "classificatória"), snap => {
+  onValue(ref(db4, "classificatória"), snap => {
     categoriaSelect.innerHTML = "<option value=''>Selecione</option>";
     atletaSelect.innerHTML = "<option value=''>Selecione</option>";
     dadosAtletas = {};
@@ -79,7 +79,7 @@ categoriaSelect.addEventListener("change", () => {
 
   if (modoAtual === "fases") {
     // 🔹 Carrega atletas da fase classificatória
-    const categoriaRef = ref(db, `fases/${categoria}`);
+    const categoriaRef = ref(db4, `fases/${categoria}`);
     
     onValue(categoriaRef, snap => {
       atletaSelect.innerHTML = "<option value=''>Selecione</option>";
@@ -108,7 +108,7 @@ categoriaSelect.addEventListener("change", () => {
 
   } else {
     // 🔹 Carrega atletas de fases eliminatórias (oitavas, quartas, semifinal, final)
-    const categoriaRef = ref(db, `${modoAtual}/${categoria}`);
+    const categoriaRef = ref(db4, `${modoAtual}/${categoria}`);
 
     onValue(categoriaRef, snap => {
       atletaSelect.innerHTML = "<option value=''>Selecione</option>";
@@ -143,7 +143,7 @@ function carregarDadosDaFase(caminho) {
     modoAtual = "fase";
     console.log(`🔍 Carregando dados da fase: ${caminho}`);
     
-    const faseRef = ref(db, caminho);
+    const faseRef = ref(db4, caminho);
 
     onValue(faseRef, snapshot => {
         const dados = snapshot.val();
@@ -260,7 +260,7 @@ function monitorarJogosRealtime() {
     if (!categoria || !fase || !ritmoOriginal) return;
 
     // Monitora a pasta do Botão 1 (Ex: jogos/oitavas/Mirim/1º Jogo)
-    onValue(ref(db, `jogos/${fase}/${categoria}/${ritmoOriginal}`), (snapshot) => {
+    onValue(ref(db4, `jogos/${fase}/${categoria}/${ritmoOriginal}`), (snapshot) => {
         if (snapshot.exists()) {
             const dados = snapshot.val();
             Object.keys(dados).forEach(nome => marcarCheckbox(nome, ritmoOriginal));
@@ -268,7 +268,7 @@ function monitorarJogosRealtime() {
     });
 
     // Monitora a pasta do Botão 2 (Ex: jogos/oitavas/Mirim/1jogo)
-    onValue(ref(db, `jogos/${fase}/${categoria}/${ritmoLimpo}`), (snapshot) => {
+    onValue(ref(db4, `jogos/${fase}/${categoria}/${ritmoLimpo}`), (snapshot) => {
         if (snapshot.exists()) {
             const dados = snapshot.val();
             // No Botão 2 usamos push, então o nome está dentro do objeto
@@ -314,7 +314,7 @@ async function enviarParaJurados(jurados) {
         const caminhoVerificacao = `jogos/${faseSelecionada}/${categoria}/${ritmo}/${nomeAtleta}`;
 
         try {
-            const snapshot = await get(ref(db, caminhoVerificacao));
+            const snapshot = await get(ref(db4, caminhoVerificacao));
             let deveEnviar = true;
             
             if (snapshot.exists()) {
@@ -347,7 +347,7 @@ async function enviarParaJurados(jurados) {
             // Envia para os jurados (conforme o botão pressionado)
             jurados.forEach(({ raiz, nome }) => {
                 const caminhoJurado = `${raiz}/${faseSelecionada}/${ritmo}/${nome}`;
-                const promessa = push(ref(db, caminhoJurado), dados)
+                const promessa = push(ref(db4, caminhoJurado), dados)
                     .then(() => {
                         console.log(`✅ Enviado para ${caminhoJurado}`);
                     })
@@ -367,17 +367,17 @@ async function enviarParaJurados(jurados) {
 
                 if (jogo === "1jogo") {
                     // Em 1jogo, os dados devem ser salvos dentro de uma chave gerada automaticamente (ID)
-                    const refJogo = push(ref(db, caminhoJogo)); // Gera um ID único
+                    const refJogo = push(ref(db4, caminhoJogo)); // Gera um ID único
                     await set(refJogo, dados); // Salva os dados com o ID gerado
                     console.log(`✅ Enviado para o caminho ${caminhoJogo} (com ID único)`);
                 } else {
                     // Em 1º Jogo, os dados são salvos diretamente, sem a necessidade de ID
-                    await set(ref(db, caminhoJogo), dados);
+                    await set(ref(db4, caminhoJogo), dados);
                     console.log(`✅ Enviado para o caminho ${caminhoJogo} (sem ID)`);
                 }
             }
 
-            await set(ref(db, caminhoVerificacao), {
+            await set(ref(db4, caminhoVerificacao), {
                 nome: info.nome,
                 enviadoEm: new Date().toISOString(),
                 categoria: info.categoria
@@ -428,7 +428,7 @@ function carregarEnviosParaOperador1() {
   modoAtual = "oitavas";
   atualizarFaseAtiva("oitavas", btnOitavas);
   
-  onValue(ref(db, "oitavas"), snap => {
+  onValue(ref(db4, "oitavas"), snap => {
     categoriaSelect.innerHTML = "<option value=''>Selecione</option>";
     atletaSelect.innerHTML = "<option value=''>Selecione</option>";
     dadosAtletas = {};
@@ -452,7 +452,7 @@ function carregarEnviosParaOperador2() {
   modoAtual = "quartas";
   atualizarFaseAtiva("quartas", btnQuartas);
   
-  onValue(ref(db, "quartas"), snap => {
+  onValue(ref(db4, "quartas"), snap => {
     categoriaSelect.innerHTML = "<option value=''>Selecione</option>";
     atletaSelect.innerHTML = "<option value=''>Selecione</option>";
     dadosAtletas = {};
@@ -476,7 +476,7 @@ function carregarEnviosParaOperador3() {
   modoAtual = "semi-final";
   atualizarFaseAtiva("semi-final", btnSemifinal);
   
-  onValue(ref(db, "semi-final"), snap => {
+  onValue(ref(db4, "semi-final"), snap => {
     categoriaSelect.innerHTML = "<option value=''>Selecione</option>";
     atletaSelect.innerHTML = "<option value=''>Selecione</option>";
     dadosAtletas = {};
@@ -500,7 +500,7 @@ function carregarEnviosParaOperador4() {
   modoAtual = "final";
   atualizarFaseAtiva("final", btnFinal);
   
-  onValue(ref(db, "final"), snap => {
+  onValue(ref(db4, "final"), snap => {
     categoriaSelect.innerHTML = "<option value=''>Selecione</option>";
     atletaSelect.innerHTML = "<option value=''>Selecione</option>";
     dadosAtletas = {};

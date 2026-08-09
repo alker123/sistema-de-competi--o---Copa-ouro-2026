@@ -267,3 +267,5 @@ window.addEventListener("load", () => {
     carregarDadosPorGrupoFase(seletorRitmo.value, seletorFaseGrupo.value);
   }
 });
+
+

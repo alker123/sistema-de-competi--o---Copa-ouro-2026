@@ -1,4 +1,4 @@
-import { db4 as db } from "./firebase.js";
+import { db4 } from "./firebase.js";
 import { ref, onValue, push, get } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 // 📌 Elementos HTML
@@ -83,7 +83,7 @@ function carregarAtletasECategorias() {
     atletaSelect.innerHTML = "<option value=''>Selecione</option>";
     dadosAtletas = {};
 
-    const categoriaRef = ref(db, `${fase}/${categoria}`);
+    const categoriaRef = ref(db4, `${fase}/${categoria}`);
 
     // Observa os atletas da categoria para popular o dropdown
     onValue(categoriaRef, snap => {
@@ -128,7 +128,7 @@ function carregarTabelaDeJogoDaCategoria() {
     // Busca os dados de jogo para Jogo 1, Jogo 2 e Jogo 3
     const promises = ["1", "2", "3", "4"].map(jogoNum => {
         const caminho = `jogos/${fase}/${categoria}/${jogoNum}jogo`;
-        return get(ref(db, caminho)).then(snap => {
+        return get(ref(db4, caminho)).then(snap => {
             if (snap.exists()) {
                 const jogos = snap.val();
                 // Processa os dados encontrados
@@ -166,7 +166,7 @@ function carregarTabelaDeJogoDaCategoria() {
 // Função para verificar se o atleta já foi enviado para a mesma categoria, fase e jogo
 function verificarAtletaExistente(atletaNome, categoria, fase, jogo) {
     const caminho = `jogos/${fase}/${categoria}/${jogo}/${atletaNome}`;
-    return get(ref(db, caminho)).then(snap => {
+    return get(ref(db4, caminho)).then(snap => {
         return snap.exists();
     });
 }
@@ -220,7 +220,7 @@ function enviarParaFirebase(atletaNome, categoria, ritmo, faseSelecionada, jogoS
     // Usa push para adicionar um novo registro (ou set, dependendo da sua necessidade de substituir)
     // Se a intenção é apenas registrar que o jogo foi enviado, 'set' no nó 'atletaNome' seria mais simples.
     // Mantenho o 'push' original, mas é importante garantir que a estrutura do seu banco esteja correta.
-    push(ref(db, caminho), dados)
+    push(ref(db4, caminho), dados)
         .then(() => {
             console.log(`✅ Dados enviados para ${caminho}`);
             // Recarrega os dados para refletir a mudança na tabela

@@ -622,3 +622,195 @@ and (max-width: 1440px) {
     font-size: 14px;
   }
 }
+
+/* ==========================================
+   MULTILASER M10A 10.1"
+   1280x800 PAISAGEM
+   800x1280 RETRATO
+========================================== */
+
+
+/* TABLET PAISAGEM */
+@media screen 
+and (min-width: 1000px)
+and (orientation: landscape){
+
+body{
+    width:100%;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+
+.container111{
+
+    width:95%;
+    max-width:1200px;
+    height:90vh;
+
+    margin:auto;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+.avaliacao-box{
+
+    width:70%;
+    max-width:850px;
+
+    padding:25px;
+
+}
+
+
+.fotoAtleta{
+
+    width:120px;
+    height:120px;
+
+}
+
+
+.input-text{
+
+    font-size:18px;
+
+}
+
+
+button#enviar{
+
+    width:60%;
+    font-size:18px;
+
+}
+
+}
+
+
+/* TABLET RETRATO */
+@media screen 
+and (max-width:999px)
+and (orientation: portrait){
+
+
+body{
+
+    width:100%;
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+
+.container111{
+
+    width:95%;
+
+    height:auto;
+
+    margin:auto;
+
+    padding:10px;
+
+}
+
+
+
+.avaliacao-box{
+
+    width:95%;
+
+    padding:18px;
+
+}
+
+
+
+.input-container1,
+.input-container2,
+.input-container3{
+
+    flex-direction:column;
+
+    width:100%;
+
+}
+
+
+.input-container1 label,
+.input-container2 label,
+.input-container3 label{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+
+
+.input-text{
+
+    width:90%;
+
+    font-size:16px;
+
+}
+
+
+
+.fotoAtleta{
+
+    width:100px;
+
+    height:100px;
+
+}
+
+
+
+button#enviar{
+
+    width:80%;
+
+}
+
+
+
+}
+
+
+/* AJUSTE PARA GIRO DO TABLET */
+html,body{
+
+    transition:0.4s ease;
+
+}
+
+
+@media screen and (orientation:portrait){
+
+    .container111{
+
+        transform:none;
+
+    }
+
+}
+
+
+@media screen and (orientation:landscape){
+
+    .container111{
+
+        transform:none;
+
+    }
+
+}
