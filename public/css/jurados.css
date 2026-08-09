@@ -670,6 +670,10 @@ and (min-height:1200px){
 
 }
 
+input#categoria.input-text {
+  margin-left:20px !important;
+}
+
 
 .arbitros .input-text{
 
@@ -717,9 +721,8 @@ button#enviar{
 
 
 /* ==========================================
-   HORIZONTAL
-   1280 x 650
-   MENOR
+   1280 x 650 HORIZONTAL
+   COMPACTAR TUDO PARA CABER
 ========================================== */
 
 @media screen
@@ -731,84 +734,109 @@ and (max-height:700px){
 
 .container111{
 
-    width:90% !important;
+    height:650px !important;
 
-    height:620px !important;
-
-    padding:5px !important;
+    overflow:hidden !important;
 
 }
 
 
+
+/* reduz a caixa inteira */
 
 .avaliacao-box{
 
-    width:600px !important;
+    transform:scale(0.75);
 
-    max-width:65% !important;
+    transform-origin:top center;
 
-    padding:12px !important;
+    width:850px !important;
 
-}
-
-
-
-/* reduzir elementos */
-
-.fotoAtleta{
-
-    width:80px !important;
-    height:80px !important;
+    /*margin:0 auto !important;*/
+    margin:-20px !important;
 
 }
-
 
 .arbitros .input-text{
 
-    font-size:18px !important;
+    font-size:26px !important;
 
 }
 
 
 
-.input-text{
+/* reduz espaços */
+
+header{
+
+    height:70px !important;
+    
+
+}
+
+.container {
+  margin:-10px !important;
+
+}
+
+
+.lang-buttons{
+
+    margin:10px !important;
+
+}
+
+
+.lang-buttons img{
+
+    width:35px !important;
+
+    height:35px !important;
+
+}
+
+
+.fotoAtleta{
+
+    width:90px !important;
+
+    height:90px !important;
+
+}
+
+
+.input-container1,
+.input-container2,
+.input-container3{
+
+    margin:-2px !important;
+
+}
+
+
+.input-text,
+select{
+
+    height:37px !important;
 
     font-size:14px !important;
-
-    padding:5px !important;
-
-}
-
-
-
-.input-container1 label,
-.input-container2 label,
-.input-container3 label{
-
-    font-size:14px !important;
+    
 
 }
 
-
-
-.label-centralizada select,
-.input-container-atleta select{
-
-    font-size:14px !important;
-
-    padding:7px !important;
-
-}
+  select#atleta, select#nota {
+    color: #57a4f1;
+    background: rgb(65, 1, 75);
+    font-weight: bolder;
+  }
 
 
 
 button#enviar{
 
-    width:60% !important;
+    height:35px !important;
 
     font-size:14px !important;
-
-    padding:8px !important;
 
 }
 
