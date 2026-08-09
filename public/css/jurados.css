@@ -623,126 +623,70 @@ and (max-width: 1440px) {
   }
 }
 
-/* ======================================
-   MULTILASER M10A 10.1
-   AJUSTE REAL 1280x800
-====================================== */
+/* ==================================================
+   MULTILASER M10A
+   AJUSTE POR RESOLUÇÃO REAL
+================================================== */
 
-html, body{
-    width:100%;
-    min-height:100%;
-    overflow:auto;
-}
+
+/* ================================================
+   650 x 1280
+   DEITADO - COMPACTO
+================================================ */
+
+@media screen 
+and (min-width:600px)
+and (max-width:700px)
+and (min-height:1200px){
 
 
 body{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+
+    overflow:hidden;
+
 }
 
 
-/* CABEÇALHO */
-header{
-    flex-shrink:0;
-}
-
-
-/* CONTAINER PRINCIPAL */
 .container111{
 
-    width:95% !important;
-    max-width:1100px !important;
+    width:100% !important;
 
-    height:auto !important;
-    min-height:0 !important;
+    height:100vh !important;
 
-    margin:10px auto !important;
-
-    padding:15px !important;
+    padding:5px !important;
 
     display:flex;
-    align-items:center;
+
     justify-content:center;
 
+    align-items:center;
+
 }
 
 
-/* CAIXA CENTRAL */
 .avaliacao-box{
 
-    width:85% !important;
-    max-width:700px !important;
-
-    padding:15px !important;
-
-}
-
-
-/* FOTO */
-.fotoAtleta{
-
-    width:90px !important;
-    height:90px !important;
-
-}
-
-
-/* TEXTOS */
-.arbitros .input-text{
-
-    font-size:20px !important;
-
-}
-
-
-.input-text{
-
-    font-size:15px !important;
-
-}
-
-
-/* SELECT */
-.label-centralizada select,
-.input-container-atleta select{
-
-    width:90% !important;
-
-    padding:8px !important;
-
-    font-size:14px !important;
-
-}
-
-
-/* BOTAO */
-button#enviar{
-
-    width:60% !important;
+    width:95% !important;
 
     padding:10px !important;
 
 }
 
 
+.fotoAtleta{
 
-/* ==================================
-   TABLET VERTICAL 800x1280
-================================== */
+    width:80px !important;
 
-@media (orientation:portrait){
-
-.container111{
-
-    width:95% !important;
+    height:80px !important;
 
 }
 
 
-.avaliacao-box{
+.input-text{
 
-    width:95% !important;
+    font-size:14px !important;
+
+    padding:5px !important;
 
 }
 
@@ -751,9 +695,86 @@ button#enviar{
 .input-container2,
 .input-container3{
 
-    flex-direction:column;
+    margin-bottom:5px !important;
 
 }
+
+
+button#enviar{
+
+    width:70% !important;
+
+    padding:8px !important;
+
+}
+
+
+}
+
+
+
+
+/* ================================================
+   1280 x 700
+   EM PÉ - LAYOUT VERTICAL
+================================================ */
+
+@media screen 
+and (min-width:1200px)
+and (max-width:1300px)
+and (min-height:650px)
+and (max-height:750px){
+
+
+body{
+
+    overflow-y:auto;
+
+}
+
+
+.container111{
+
+    width:95% !important;
+
+    height:auto !important;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+
+
+.avaliacao-box{
+
+    width:90% !important;
+
+    max-width:800px !important;
+
+    padding:20px !important;
+
+}
+
+
+
+.input-container1,
+.input-container2,
+.input-container3{
+
+    display:flex;
+
+    flex-direction:column;
+
+    width:100%;
+
+}
+
 
 
 .input-container1 label,
@@ -767,27 +788,20 @@ button#enviar{
 }
 
 
-}
 
+.fotoAtleta{
 
-/* ==================================
-   TABLET HORIZONTAL 1280x800
-================================== */
+    width:120px !important;
 
-@media (orientation:landscape){
-
-.container111{
-
-    transform:scale(.90);
-
-    transform-origin:center top;
+    height:120px !important;
 
 }
 
 
-.avaliacao-box{
 
-    max-height:680px;
+button#enviar{
+
+    width:80% !important;
 
 }
 
